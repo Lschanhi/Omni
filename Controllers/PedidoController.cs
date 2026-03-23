@@ -1,16 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Omnimarket.Api.Services;
-using Omnimarket.Api.Models.Dtos;
 using Omnimarket.Api.Models.Dtos.Pedidos;
 
 namespace Omnimarket.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/pedidos")]
     public class PedidoController : ControllerBase
     {
         private readonly PedidoService _pedidoService;
@@ -20,51 +15,71 @@ namespace Omnimarket.Api.Controllers
             _pedidoService = pedidoService;
         }
 
+        // 🧾 CRIAR PEDIDO
         [HttpPost]
         public async Task<IActionResult> CriarPedido([FromBody] PedidoDto dto)
         {
-            var pedido = await _pedidoService.CriarPedido(dto);
-            return Ok(pedido);
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                var pedido = await _pedidoService.CriarPedido(dto);
+
+                return Ok(new
+                {
+                    mensagem = "Pedido criado com sucesso!",
+                    pedidoId = pedido.Id,
+                    valorTotal = pedido.ValorTotalPedido
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { mensagem = ex.Message });
+            }
         }
 
-        //método par buscar um pedido especifico
-        [HttpGet("{id}")]
+        // 🔍 BUSCAR PEDIDO POR ID
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> BuscarPedido(int id)
         {
             var pedido = await _pedidoService.BuscarPedido(id);
 
             if (pedido == null)
-                return NotFound();
-            
+                return NotFound(new { mensagem = "Pedido não encontrado." });
+
             return Ok(pedido);
         }
 
-        //lista todos os pedidos de um usuario
-        [HttpGet("pedidos/{usuarioId}")]
+        // 📦 LISTAR PEDIDOS DE UM USUÁRIO
+        [HttpGet("usuario/{usuarioId:int}")]
         public async Task<IActionResult> ListarPedidoUsuario(int usuarioId)
         {
             var pedidos = await _pedidoService.ListarPedidosUsuario(usuarioId);
+
             return Ok(pedidos);
         }
 
-        //cancelar um pedido
-        [HttpPut("{id}/cancelar")]
-        public async Task<IActionResult> CancelarPedido(int id, int usuarioId)
+        // ❌ CANCELAR PEDIDO
+        [HttpPut("{id:int}/cancelar")]
+        public async Task<IActionResult> CancelarPedido(
+            int id,
+            [FromQuery] int usuarioId // 🔥 vem pela URL ?usuarioId=1
+        )
         {
             try
             {
                 var cancelado = await _pedidoService.CancelarPedido(id, usuarioId);
 
-                if(!cancelado)
-                    return NotFound();
+                if (!cancelado)
+                    return NotFound(new { mensagem = "Pedido não encontrado." });
 
-                return Ok("Pedido cancelado com sucesso");
+                return Ok(new { mensagem = "Pedido cancelado com sucesso!" });
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { mensagem = ex.Message });
             }
-
         }
     }
 }
