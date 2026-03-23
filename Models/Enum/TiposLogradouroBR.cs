@@ -1,54 +1,53 @@
 using System.ComponentModel.DataAnnotations;
-
+using System.Text.Json.Serialization;
 
 namespace Omnimarket.Api.Models.Enum
-
 {
+    [JsonConverter(typeof(JsonStringEnumConverter))] // 🔥 importante pro JSON
     public enum TiposLogradouroBR
     {
-
         Nenhum = 0,
-        
+
         [Display(Name = "Rua (R)")]
-        R,
+        Rua = 1,
 
         [Display(Name = "Avenida (AV)")]
-        AV,
+        Avenida = 2,
 
         [Display(Name = "Travessa (TV)")]
-        TV,
+        Travessa = 3,
 
         [Display(Name = "Alameda (AL)")]
-        AL,
+        Alameda = 4,
 
         [Display(Name = "Praça (PC)")]
-        PC,
+        Praca = 5,
 
         [Display(Name = "Estrada (EST)")]
-        EST,
+        Estrada = 6,
 
         [Display(Name = "Rodovia (ROD)")]
-        ROD,
+        Rodovia = 7,
 
         [Display(Name = "Viela (VLA)")]
-        VLA,
+        Viela = 8,
 
         [Display(Name = "Vila (VL)")]
-        VL,
+        Vila = 9,
 
         [Display(Name = "Largo (LRG)")]
-        LRG,
+        Largo = 10,
 
         [Display(Name = "Ladeira (LD)")]
-        LD,
+        Ladeira = 11,
 
         [Display(Name = "Conjunto (CJ)")]
-        CJ,
+        Conjunto = 12,
 
         [Display(Name = "Quadra (Q)")]
-        Q,
+        Quadra = 13,
 
         [Display(Name = "Beco (BC)")]
-        BC
+        Beco = 14
     }
 }
