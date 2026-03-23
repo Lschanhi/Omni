@@ -40,7 +40,7 @@ namespace Omnimarket.Api.Controllers
                 .Select(e => new
                 {
                     e.Id,
-                    TipoLogradouro = EnumUtils.GetDisplayName(e.TipoLogradouro),
+                    TipoLogradouro = EnumExtensions.GetDisplayName(e.TipoLogradouro),
                     e.NomeEndereco,
                     e.Numero,
                     e.Complemento,
@@ -66,7 +66,7 @@ namespace Omnimarket.Api.Controllers
                 .Select(e => new
                 {
                     e.Id,
-                    TipoLogradouro = EnumUtils.GetDisplayName(e.TipoLogradouro),
+                    TipoLogradouro = EnumExtensions.GetDisplayName(e.TipoLogradouro),
                     e.NomeEndereco,
                     e.Numero,
                     e.Complemento,
