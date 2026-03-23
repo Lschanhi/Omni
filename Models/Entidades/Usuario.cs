@@ -2,10 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 using Omnimarket.Api.Models.Entidades;
 
 namespace Omnimarket.Api.Models
 {
+
+    [Index(nameof(Email), IsUnique = true)]
+    [Index(nameof(Cpf), IsUnique = true)]
     public class Usuario
     {
         [Key]
