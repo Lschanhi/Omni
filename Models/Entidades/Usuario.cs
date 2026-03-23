@@ -51,6 +51,9 @@ namespace Omnimarket.Api.Models
         [NotMapped]
         public string Token { get; set; } = string.Empty;
 
+        public bool AceitouTermos { get; set; }
+        public DateTime? DataAceiteTermos { get; set; }
+
         // 📞 Relacionamentos
         public List<Telefone> Telefones { get; set; } = new();
         public List<Endereco> Enderecos { get; set; } = new();

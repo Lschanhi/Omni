@@ -30,6 +30,10 @@ namespace Omnimarket.Api.Models.Dtos.Usuarios
         [Required(ErrorMessage = "Confirmação de senha é obrigatória")]
         [Compare("Password", ErrorMessage = "As senhas não coincidem")]
         public string ConfirmPassword { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Você deve aceitar os termos.")]
+        [Range(typeof(bool), "true", "true", ErrorMessage = "Você deve aceitar os termos.")]
+        public bool AceitouTermos { get; set; }
     }
 
     public class UsuarioRegistroComContatoDto : UsuarioRegistroDto
