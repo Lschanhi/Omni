@@ -6,6 +6,7 @@ using Omnimarket.Api.Models.Dtos.Usuarios;
 using Omnimarket.Api.Utils;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using Omni.Models.Dtos.Usuarios;
 
 namespace Omnimarket.Api.Controllers
 {
@@ -162,6 +163,55 @@ namespace Omnimarket.Api.Controllers
                     detalhes = ex.Message
                 });
             }
+        }
+
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> AtualizarUsuario(int id, [FromBody] UsuarioAtualizarDto dto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var usuario = await _context.TBL_USUARIO.FindAsync(id);
+
+            if (usuario == null)
+                return NotFound(new { mensagem = "Usuário não encontrado." });
+
+            // 🔎 verificar email duplicado (se mudou)
+            if (usuario.Email != dto.Email.ToLower())
+            {
+                var emailExiste = await _context.TBL_USUARIO
+                    .AnyAsync(x => x.Email == dto.Email.ToLower());
+
+                if (emailExiste)
+                    return BadRequest(new { mensagem = "Email já está em uso." });
+            }
+
+            // ✏️ atualizar dados
+            usuario.Nome = dto.Nome.Trim();
+            usuario.Sobrenome = dto.Sobrenome.Trim();
+            usuario.Email = dto.Email.ToLower().Trim();
+
+            // 🔐 atualizar senha (se enviada)
+            if (!string.IsNullOrEmpty(dto.Password))
+            {
+                Criptografia.CriarPasswordHash(dto.Password, out byte[] hash, out byte[] salt);
+                usuario.PasswordHash = hash;
+                usuario.PasswordSalt = salt;
+            }
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                mensagem = "Usuário atualizado com sucesso!",
+                usuario = new
+                {
+                    usuario.Id,
+                    usuario.Nome,
+                    usuario.Sobrenome,
+                    usuario.Email
+                }
+            });
         }
     }
 }
