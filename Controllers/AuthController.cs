@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Omnimarket.Api.Services;
 using Omnimarket.Api.Models.Dtos.Login;
 
@@ -22,28 +17,52 @@ namespace Omnimarket.Api.Controllers
             _tokenService = tokenService;
         }
 
-        //a loginDTO pedirá o email e senha para o user e dps virá para esse método.
-        //o método abaixo é para retornar apenas o id, nome, sobrenome, email e o token do user dps do login.
+        // 🔐 LOGIN
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginDto login)
+        public async Task<IActionResult> Login([FromBody] LoginDto login)
         {
-            var usuario = await _authService.ValidarLogin(login);
-
-            if (usuario == null)
+            try
             {
-                return Unauthorized("Email ou senha incorretos!");
+                // 🔎 Validação básica
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                var usuario = await _authService.ValidarLogin(login);
+
+                if (usuario == null)
+                {
+                    return Unauthorized(new
+                    {
+                        mensagem = "Email ou senha incorretos"
+                    });
+                }
+
+                var token = _tokenService.GerarToken(
+                    usuario.Email,
+                    usuario.Id.ToString()
+                );
+
+                return Ok(new
+                {
+                    mensagem = "Login realizado com sucesso",
+                    usuario = new
+                    {
+                        id = usuario.Id,
+                        nome = usuario.Nome,
+                        sobrenome = usuario.Sobrenome,
+                        email = usuario.Email
+                    },
+                    token
+                });
             }
-            
-            var token =  _tokenService.GerarToken(usuario.Email, usuario.Id.ToString());
-
-            return Ok(new 
+            catch (Exception ex)
             {
-                id = usuario.Id,
-                nome = usuario.Nome,
-                sobrenome = usuario.Sobrenome,
-                email = usuario.Email,
-                token = token
-            });
+                return StatusCode(500, new
+                {
+                    mensagem = "Erro interno ao realizar login",
+                    detalhes = ex.Message
+                });
+            }
         }
     }
 }

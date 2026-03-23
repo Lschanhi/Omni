@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace Omnimarket.Api.Utils
@@ -18,18 +19,23 @@ namespace Omnimarket.Api.Utils
 
         public static bool VerificarPasswordHash(string password, byte[] hash, byte[] salt)
         {
-            using (var hmac = new System.Security.Cryptography.HMACSHA512(salt))
-            {
-                var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-                for (int i = 0; i < computedHash.Length; i++)
-                {
-                    if (computedHash[i] != hash[i])
-                    {
-                        return false;
-                    }
-                }
-                return true;
-            }
+            if (string.IsNullOrEmpty(password))
+                return false;
+
+            if (hash == null || salt == null)
+                return false;
+
+            if (hash.Length != 64)
+                throw new ArgumentException("Hash inválido (esperado 64 bytes)");
+
+            if (salt.Length != 128)
+                throw new ArgumentException("Salt inválido (esperado 128 bytes)");
+
+            using var hmac = new System.Security.Cryptography.HMACSHA512(salt);
+
+            var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+
+            return CryptographicOperations.FixedTimeEquals(computedHash, hash);
         }
         /*
              // Ajuste conforme performance do seu servidor; 100k é um exemplo comum
@@ -64,9 +70,9 @@ namespace Omnimarket.Api.Utils
 
         */
 
-        
+
 
 
     }
-    
+
 }
