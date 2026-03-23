@@ -100,6 +100,7 @@ namespace Omnimarket.Api.Controllers
             var totalTelefones = await _context.TBL_TELEFONE.CountAsync(t => t.UsuarioId == usuarioId);
             if (totalTelefones <= 1)
                 return BadRequest(new { mensagem = "Não é possível remover o último telefone do usuário." });
+            
 
             _context.TBL_TELEFONE.Remove(telefone);
             await _context.SaveChangesAsync();

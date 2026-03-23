@@ -14,7 +14,6 @@ namespace Omnimarket.Api.Services
     {
         private readonly HttpClient _httpClient;
 
-        // O HttpClient é injetado automaticamente pelo ASP.NET Core
         public CpfService(HttpClient httpClient)
         {
             _httpClient = httpClient;
@@ -22,56 +21,88 @@ namespace Omnimarket.Api.Services
 
         public async Task<CpfResposta> ConsultarCpf(string cpf)
         {
-            // Remove formatação para enviar apenas números
             string cpfLimpo = cpf.Replace(".", "").Replace("-", "").Trim();
 
-            // EXEMPLO: URL de uma API fictícia. 
-            // Você substituirá pela URL do serviço que contratar (ex: BrasilAPI, ReceitaWS)
+            // 🔥 TESTE LOCAL (TCC)
+            var teste = TesteConsultaCpf(cpfLimpo);
+            if (teste != null)
+                return teste;
+
             string url = $"https://api.exemplo.com/v1/cpf/{cpfLimpo}";
 
             try
             {
                 var response = await _httpClient.GetAsync(url);
 
-                if (response.IsSuccessStatusCode)
+                if (!response.IsSuccessStatusCode)
                 {
-                    var conteudo = await response.Content.ReadAsStringAsync();
-                    
-                    // Configuração para deserializar JSON case-insensitive
-                    var options = new JsonSerializerOptions
+                    return new CpfResposta
                     {
-                        PropertyNameCaseInsensitive = true
+                        Sucesso = false,
+                        Erro = "CPF não encontrado ou erro na API externa"
                     };
-
-                    return JsonSerializer.Deserialize<CpfResposta>(conteudo, options);
                 }
 
-                return new CpfResposta { Sucesso = false, Erro = "CPF não encontrado ou erro na API externa" };
+                var conteudo = await response.Content.ReadAsStringAsync();
+
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+
+                var resultado = JsonSerializer.Deserialize<CpfResposta>(conteudo, options);
+
+                if (resultado == null)
+                {
+                    return new CpfResposta
+                    {
+                        Sucesso = false,
+                        Erro = "Erro ao processar resposta da API"
+                    };
+                }
+
+                resultado.Sucesso = true;
+                return resultado;
             }
-            catch (System.Exception ex)
+            catch (HttpRequestException)
             {
-                return new CpfResposta { Sucesso = false, Erro = $"Falha na conexão: {ex.Message}" };
+                return new CpfResposta
+                {
+                    Sucesso = false,
+                    Erro = "Erro de conexão com serviço externo"
+                };
+            }
+            catch (TaskCanceledException)
+            {
+                return new CpfResposta
+                {
+                    Sucesso = false,
+                    Erro = "Tempo de requisição excedido"
+                };
+            }
+            catch (System.Exception)
+            {
+                return new CpfResposta
+                {
+                    Sucesso = false,
+                    Erro = "Erro inesperado ao consultar CPF"
+                };
             }
         }
 
-         private CpfResposta? TesteConsultaCpf(string cpf)
+        // 🔥 MOCK PARA TCC / TESTE
+        private CpfResposta? TesteConsultaCpf(string cpf)
         {
-            var cpfLimpo = cpf.Replace(".", "").Replace("-", "").Trim();
-
-            if (cpfLimpo == "12345678909")
+            if (cpf == "12345678909")
             {
                 return new CpfResposta
                 {
                     Sucesso = true,
-                    Nome = "NOME DO PROFESSOR AQUI"
+                    Nome = "USUÁRIO TESTE TCC"
                 };
             }
 
             return null;
         }
-        
     }
-
-    
-    
 }
