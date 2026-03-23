@@ -22,5 +22,11 @@ namespace Omnimarket.Api.Services
             return await _context.TBL_PRODUTO
                 .AnyAsync(p => p.UsuarioId == usuarioId);
         }
+
+        public async Task<bool> UsuarioComprador(int usuarioId)
+        {
+            return await _context.TBL_CARRINHO
+                .AnyAsync(c => c.UsuarioId == usuarioId);
+        }
     }
 }
