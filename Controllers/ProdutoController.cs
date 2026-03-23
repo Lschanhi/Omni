@@ -8,141 +8,78 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Omnimarket.Api.Models.Dtos.Produtos;
 using Omnimarket.Api.Services;
+using Omni.Models.Dtos.Produtos;
 
 
 namespace Omnimarket.Api.Controllers
 {
    [ApiController]
-    [Route("api/produtos")]
-    public class ProdutoController : ControllerBase
+[Route("api/[controller]")]
+public class ProdutoController : ControllerBase
+{
+    private readonly IProdutoService _service;
+
+    public ProdutoController(IProdutoService service)
     {
-        private readonly DataContext _context;
-        //private readonly UsuarioService _usuarioService;
+        _service = service;
+    }
 
-        public ProdutoController(DataContext context)
-        {
-            _context = context;
-        }
+    [HttpGet]
+    public async Task<IActionResult> Get()
+        => Ok(await _service.GetAllAsync());
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProdutoLeituraDto>>> GetProduto()
-        {
-            var produtos = await _context.TBL_PRODUTO
-                .Where(p => p.Disponivel)
-                .Select(p => new ProdutoLeituraDto
-                {
-                    Id = p.Id,
-                    Nome = p.Nome,
-                    Preco = p.Preco,
-                    Disponivel = p.Disponivel,
-                    Descricao = p.Descricao,
-                    QtdProdutos = p.QtdProdutos,
-                    MediaAvaliacao = p.MediaAvaliacao,
-                    DtCriacao = p.DtCriacao
-                })
-                .ToListAsync();
+    [HttpGet("{id}")]
+    public async Task<IActionResult> Get(int id)
+    {
+        var produto = await _service.GetByIdAsync(id);
 
-                //a linha abaixo serve para saber se o user pode ser clasificado como vendedor
-                //bool ehVendedor = await _usuarioService.UsuarioVendedor(usuarioId); //método do service usuario para conferir se tem um produto criado e se está disponivel
+        if (produto == null)
+            return NotFound();
 
-            return Ok(produtos);
-        }
+        return Ok(produto);
+    }
 
-        [HttpGet("{id:int}")]
-        public async Task<ActionResult<ProdutoLeituraDto>> GetProduto(int id)
-        {
-            var produto = await _context.TBL_PRODUTO
-                .Where(p => p.Id == id && p.Disponivel)
-                .Select(p => new ProdutoLeituraDto
-                {
-                    Id = p.Id,
-                    Nome = p.Nome,
-                    Preco = p.Preco,
-                    Disponivel = p.Disponivel,
-                    Descricao = p.Descricao,
-                    QtdProdutos = p.QtdProdutos,
-                    MediaAvaliacao = p.MediaAvaliacao,
-                    DtCriacao = p.DtCriacao
-                })
-                .FirstOrDefaultAsync();
+    [HttpPost]
+    public async Task<IActionResult> Post(ProdutoCriacaoDto dto)
+    {
+        int usuarioId = 1; // depois vem do JWT
 
-            if (produto is null) return NotFound();
-            return Ok(produto);
-        }
+        var produto = await _service.CreateAsync(dto, usuarioId);
 
-        [HttpPost]
-        public async Task<ActionResult<ProdutoLeituraDto>> CriarProduto([FromBody] ProdutoCriacaoDto dto)
-        {
-            var produto = new Produto
-            {
-                Nome = dto.Nome,
-                Preco = dto.Preco,
-                Descricao = dto.Descricao,
-                QtdProdutos = dto.QtdProdutos,
+        return CreatedAtAction(nameof(Get), new { id = produto.Id }, produto);
+    }
 
-                // Regras do servidor (cliente não controla)
-                Disponivel = true,
-                DtCriacao = DateTimeOffset.UtcNow
-            };
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Put(int id, ProdutoAtualizarDto dto)
+    {
+        var updated = await _service.UpdateAsync(id, dto);
 
-            _context.TBL_PRODUTO.Add(produto);
-            await _context.SaveChangesAsync();
+        if (!updated)
+            return NotFound();
 
-            var readDto = new ProdutoLeituraDto
-            {
-                Id = produto.Id,
-                Nome = produto.Nome,
-                Preco = produto.Preco,
-                Disponivel = produto.Disponivel,
-                Descricao = produto.Descricao,
-                QtdProdutos = produto.QtdProdutos,
-                MediaAvaliacao = produto.MediaAvaliacao,
-                DtCriacao = produto.DtCriacao
-            };
+        return NoContent();
+    }
 
-            return CreatedAtAction(
-                actionName: nameof(GetProduto),
-                routeValues: new { id = produto.Id },
-                value: readDto);
-        }
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var deleted = await _service.DeleteAsync(id);
 
-        [HttpPut("{id:int}")]
-        public async Task<IActionResult> AtualizarProduto(int id, [FromBody] ProdutoAtualizarDto dto)
-        {
-            var produto = await _context.TBL_PRODUTO.FindAsync(id);
-            if (produto is null) return NotFound();
+        if (!deleted)
+            return NotFound();
 
-            produto.Nome =dto.Nome ;
-            produto.Preco = dto.Preco;
-            produto.Descricao = dto.Descricao;
-            produto.QtdProdutos = dto.QtdProdutos;
+        return NoContent();
+    }
 
-            await _context.SaveChangesAsync();
-            return NoContent();
-        }
+    [HttpGet("filtro")]
+    public async Task<IActionResult> GetPaged([FromQuery] ProdutoFiltroDto filtro)
+    {
+    var result = await _service.GetPagedAsync(filtro);
+    return Ok(result);
+    }
+}
 
-        [HttpPut("desativar/{id:int}")]
-        public async Task<IActionResult> DesativarProduto(int id)
-        {
-            var produto = await _context.TBL_PRODUTO.FindAsync(id);
-            if (produto is null) return NotFound();
-
-            produto.Disponivel = false;
-            await _context.SaveChangesAsync();
-
-            return Ok("Produto marcado como indisponível para compra.");
-        }
-
-        [HttpPut("disponibilizar/{id:int}")]
-        public async Task<IActionResult> Disponibilizar(int id)
-        {
-            var produto = await _context.TBL_PRODUTO.FindAsync(id);
-            if (produto is null) return NotFound();
-
-            produto.Disponivel = true;
-            await _context.SaveChangesAsync();
-
-            return Ok("Produto reativado.");
-        }
+    internal interface IProdutoService
+    {
     }
 }
