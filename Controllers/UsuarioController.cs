@@ -2,55 +2,47 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Omnimarket.Api.Data;
 using Omnimarket.Api.Models;
-using Omnimarket.Api.Services;
-using Omnimarket.Api.Utils;
-using Omnimarket.Api.Models.Enum;
 using Omnimarket.Api.Models.Dtos.Usuarios;
-
-
+using Omnimarket.Api.Utils;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace Omnimarket.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class UsuarioController : ControllerBase
     {
         private readonly DataContext _context;
-        private readonly ICpfService _cpfService;
-
-        /*public UsuarioController(DataContext context, ICpfService cpfService)
-        {
-            _context = context;
-            _cpfService = cpfService;
-        }*/
 
         public UsuarioController(DataContext context)
         {
             _context = context;
         }
 
-        /*public UsuarioController(DataContext context, UsuarioService usuarioService)
+        // 🔒 Pegar ID do usuário logado (JWT)
+        private int GetUserId()
         {
-            _context = context;
-            _usuarioService = usuarioService;
-        }*/
+            return int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+        }
 
         private async Task<bool> EmailExistente(string email) =>
             await _context.TBL_USUARIO.AnyAsync(x => x.Email.ToLower() == email.ToLower());
 
-        private async Task<bool> CpfExistente(string cpf)
-        {
-            string cpfLimpo = cpf.Replace(".", "").Replace("-", "").Trim();
-            return await _context.TBL_USUARIO.AnyAsync(x => x.Cpf == cpfLimpo);
-        }
+        private async Task<bool> CpfExistente(string cpf) =>
+            await _context.TBL_USUARIO.AnyAsync(x => x.Cpf == cpf);
 
-        [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetById(int id)
+        // 🔐 PERFIL DO USUÁRIO LOGADO
+        [Authorize]
+        [HttpGet("me")]
+        public async Task<IActionResult> GetMe()
         {
+            var userId = GetUserId();
+
             var usuario = await _context.TBL_USUARIO
                 .Include(u => u.Telefones)
                 .Include(u => u.Enderecos)
-                .FirstOrDefaultAsync(u => u.Id == id);
+                .FirstOrDefaultAsync(u => u.Id == userId);
 
             if (usuario is null) return NotFound();
 
@@ -61,51 +53,24 @@ namespace Omnimarket.Api.Controllers
                 usuario.Nome,
                 usuario.Sobrenome,
                 usuario.Email,
-                Telefones = usuario.Telefones.Select(t => new { t.Id, numeroE164 = t.NumeroE164, t.IsPrincipal }),
+                Telefones = usuario.Telefones.Select(t => new { t.Id, t.NumeroE164, t.IsPrincipal }),
                 Enderecos = usuario.Enderecos.Select(e => new { e.Id, e.TipoLogradouro, e.NomeEndereco, e.Numero, e.Cep, e.Cidade, e.Uf, e.IsPrincipal })
             });
         }
 
-
-        [HttpPost("Registrar")]
+        // 🧾 REGISTRO
+        [HttpPost("registrar")]
         public async Task<IActionResult> RegistrarUsuario([FromBody] UsuarioRegistroComContatoDto userDto)
         {
             try
             {
                 if (!ModelState.IsValid)
-                {
-                    var erros = ModelState.Values
-                        .SelectMany(v => v.Errors)
-                        .Select(e => e.ErrorMessage)
-                        .ToList();
+                    return BadRequest(ModelState);
 
-                    return BadRequest(new { mensagem = "Dados inválidos", erros });
-                }
-
-                if (userDto.Telefones is null || userDto.Telefones.Count < 1)
-                    return BadRequest(new { mensagem = "Informe pelo menos 1 telefone." });
-
+                // 🔎 Validação CPF
                 if (!CpfValidador.ValidarCpf(userDto.Cpf))
                     return BadRequest(new { mensagem = "CPF inválido." });
-             /*
-                var dadosReceita = await _cpfService.ConsultarCpf(userDto.Cpf);
-                if (!dadosReceita.Sucesso)
-                    return BadRequest("Não foi possível validar o CPF na Receita Federal. Tente novamente.");
 
-                // (opcional) anti-fraude que você fez
-                string nomeCompletoUsuario = $"{userDto.Nome} {userDto.Sobrenome}";
-                if (!StringExtensions.NomeCompativel(nomeCompletoUsuario, dadosReceita.Nome))
-                {
-                    return BadRequest(new
-                    {
-                        mensagem = "Divergência de titularidade.",
-                        detalhes = $"O nome informado não confere com o CPF. O nome registrado na Receita Federal começa com: {EsconderNome(dadosReceita.Nome)}"
-                    });
-                }
-            */
-                
-
-                // Normalização
                 string cpfLimpo = userDto.Cpf.Replace(".", "").Replace("-", "").Trim();
 
                 if (await CpfExistente(cpfLimpo))
@@ -114,38 +79,55 @@ namespace Omnimarket.Api.Controllers
                 if (await EmailExistente(userDto.Email))
                     return BadRequest(new { mensagem = "Email já cadastrado." });
 
+                // 🔐 Hash de senha
                 Criptografia.CriarPasswordHash(userDto.Password, out byte[] hash, out byte[] salt);
 
                 var novoUsuario = new Usuario
                 {
-                
                     Cpf = cpfLimpo,
                     Nome = userDto.Nome.Trim(),
                     Sobrenome = userDto.Sobrenome.Trim(),
                     Email = userDto.Email.ToLower().Trim(),
                     PasswordHash = hash,
                     PasswordSalt = salt,
-                    DataCadastro = DateTime.Now,
-                    DataAcesso = null
+                    DataCadastro = DateTime.UtcNow
                 };
 
-                // Telefones
+                // 📞 Telefones
                 for (int i = 0; i < userDto.Telefones.Count; i++)
                 {
-                        var t = userDto.Telefones[i];
+                    var t = userDto.Telefones[i];
 
-                        var r = ValidadorTelefone.ValidarCelularBr(t.Ddd, t.Numero);
-                        if (!r.Valido)
-                            return BadRequest(new { mensagem = $"Telefone inválido (apenas celular BR). Item {i + 1}." });
+                    var r = ValidadorTelefone.ValidarCelularBr(t.Ddd, t.Numero);
+                    if (!r.Valido)
+                        return BadRequest(new { mensagem = $"Telefone inválido (item {i + 1})" });
 
-                        novoUsuario.Telefones.Add(new Telefone
-                        {
-                            
-                            NumeroE164 = r.E164!,               // salva E164
-                            IsPrincipal = t.IsPrincipal ?? (i == 0)
-                        });
+                    novoUsuario.Telefones.Add(new Telefone
+                    {
+                        NumeroE164 = r.E164!,
+                        IsPrincipal = t.IsPrincipal ?? (i == 0)
+                    });
                 }
 
+                // 🏠 Endereços (opcional mas recomendado)
+                if (userDto.Enderecos != null && userDto.Enderecos.Count > 0)
+                {
+                    for (int i = 0; i < userDto.Enderecos.Count; i++)
+                    {
+                        var e = userDto.Enderecos[i];
+
+                        novoUsuario.Enderecos.Add(new Endereco
+                        {
+                            TipoLogradouro = e.TipoLogradouro,
+                            NomeEndereco = e.NomeEndereco,
+                            Numero = e.Numero,
+                            Cep = e.Cep,
+                            Cidade = e.Cidade,
+                            Uf = e.Uf,
+                            IsPrincipal = e.IsPrincipal ?? (i == 0)
+                        });
+                    }
+                }
 
                 await _context.TBL_USUARIO.AddAsync(novoUsuario);
                 await _context.SaveChangesAsync();
@@ -156,9 +138,8 @@ namespace Omnimarket.Api.Controllers
                     usuario = new
                     {
                         id = novoUsuario.Id,
-                        cpf = novoUsuario.Cpf,
-                        email = novoUsuario.Email,
-                        nomeCompleto = $"{novoUsuario.Nome} {novoUsuario.Sobrenome}"
+                        nome = $"{novoUsuario.Nome} {novoUsuario.Sobrenome}",
+                        email = novoUsuario.Email
                     }
                 });
             }
@@ -166,7 +147,7 @@ namespace Omnimarket.Api.Controllers
             {
                 return StatusCode(500, new
                 {
-                    mensagem = "Erro ao salvar no banco de dados.",
+                    mensagem = "Erro ao salvar no banco.",
                     detalhes = dbEx.InnerException?.Message ?? dbEx.Message
                 });
             }
@@ -174,18 +155,10 @@ namespace Omnimarket.Api.Controllers
             {
                 return StatusCode(500, new
                 {
-                    mensagem = "Erro interno ao registrar usuário.",
+                    mensagem = "Erro interno.",
                     detalhes = ex.Message
                 });
             }
         }
-
-        private string EsconderNome(string nome)
-        {
-            if (string.IsNullOrEmpty(nome) || nome.Length < 3) return "***";
-            return nome.Substring(0, 3) + "***";
-        }
-
-
     }
 }
