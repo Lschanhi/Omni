@@ -7,6 +7,8 @@ using Omnimarket.Api.Models;
 using Omnimarket.Api.Models.Enum;
 using Omnimarket.Api.Utils;
 using Omnimarket.Api.Models.Dtos.Enderecos;
+using Omnimarket.Api.Models.Dtos.Telefones;
+
 
 namespace Omnimarket.Api.Controllers
 {
@@ -82,8 +84,10 @@ namespace Omnimarket.Api.Controllers
 
         // ➕ CRIAR
         [HttpPost]
-        public async Task<IActionResult> Criar(int usuarioId, [FromBody] UsuarioEnderecoDto dto)
+        public async Task<IActionResult> Criar( [FromBody] UsuarioEnderecoDto dto)
         {
+            var usuarioId = int.Parse(User.FindFirst("id")!.Value);
+
             if (usuarioId != GetUserId())
                 return Forbid();
 
@@ -126,62 +130,78 @@ namespace Omnimarket.Api.Controllers
         }
 
         // 🔄 ATUALIZAR
-        [HttpPut("{enderecoId:int}")]
-        public async Task<IActionResult> Atualizar(int usuarioId, int enderecoId, [FromBody] UsuarioEnderecoDto dto)
+        [HttpPut("{telefoneId:int}")]
+        public async Task<IActionResult> Atualizar( int telefoneId, [FromBody] UsuarioTelefoneDto dto)
         {
-            if (usuarioId != GetUserId())
-                return Forbid();
+
+            var usuarioId = int.Parse(User.FindFirst("id")!.Value);
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var endereco = await _context.TBL_ENDERECO
-                .FirstOrDefaultAsync(e => e.UsuarioId == usuarioId && e.Id == enderecoId);
+            var telefone = await _context.TBL_TELEFONE
+                .FirstOrDefaultAsync(t => t.UsuarioId == usuarioId && t.Id == telefoneId);
 
-            if (endereco is null)
-                return NotFound();
+            if (telefone is null)
+                return NotFound(new { mensagem = "Telefone não encontrado." });
 
-            // ⭐ Garantir apenas 1 principal
+            var r = ValidadorTelefone.ValidarCelularBr(dto.Ddd, dto.Numero);
+            if (!r.Valido)
+                return BadRequest(new { mensagem = "Telefone inválido (apenas celular BR)." });
+
+            // 🔐 Atualiza número
+            telefone.NumeroE164 = r.E164!;
+
+            // ⭐ REGRA: SOMENTE 1 PRINCIPAL
             if (dto.IsPrincipal == true)
             {
-                var enderecos = _context.TBL_ENDERECO
-                    .Where(e => e.UsuarioId == usuarioId);
+                var telefones = await _context.TBL_TELEFONE
+                    .Where(t => t.UsuarioId == usuarioId)
+                    .ToListAsync();
 
-                foreach (var e in enderecos)
-                    e.IsPrincipal = false;
+                foreach (var t in telefones)
+                    t.IsPrincipal = false;
+
+                telefone.IsPrincipal = true;
             }
 
-            endereco.Cep = dto.Cep.Replace("-", "").Trim();
-            endereco.TipoLogradouro = dto.TipoLogradouro;
-            endereco.NomeEndereco = dto.NomeEndereco.Trim();
-            endereco.Numero = dto.Numero.Trim();
-            endereco.Complemento = dto.Complemento?.Trim();
-            endereco.Cidade = dto.Cidade.Trim();
-            endereco.Uf = dto.Uf.Trim();
-            endereco.IsPrincipal = dto.IsPrincipal ?? endereco.IsPrincipal;
-
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok(new { mensagem = "Telefone atualizado com sucesso." });
         }
-
         // ❌ REMOVER
-        [HttpDelete("{enderecoId:int}")]
-        public async Task<IActionResult> Remover(int usuarioId, int enderecoId)
+        [HttpDelete("{telefoneId:int}")]
+        public async Task<IActionResult> Remover( int telefoneId)
         {
-            if (usuarioId != GetUserId())
-                return Forbid();
 
-            var endereco = await _context.TBL_ENDERECO
-                .FirstOrDefaultAsync(e => e.UsuarioId == usuarioId && e.Id == enderecoId);
+            var usuarioId = int.Parse(User.FindFirst("id")!.Value);
+            
+            var telefone = await _context.TBL_TELEFONE
+                .FirstOrDefaultAsync(t => t.UsuarioId == usuarioId && t.Id == telefoneId);
 
-            if (endereco is null)
-                return NotFound();
+            if (telefone is null)
+                return NotFound(new { mensagem = "Telefone não encontrado." });
 
-            _context.TBL_ENDERECO.Remove(endereco);
+            var telefones = await _context.TBL_TELEFONE
+                .Where(t => t.UsuarioId == usuarioId)
+                .ToListAsync();
+
+            if (telefones.Count <= 1)
+                return BadRequest(new { mensagem = "Não é possível remover o último telefone." });
+
+            // 🔥 Se for principal → escolher outro automaticamente
+            if (telefone.IsPrincipal)
+            {
+                var novoPrincipal = telefones.FirstOrDefault(t => t.Id != telefoneId);
+
+                if (novoPrincipal != null)
+                    novoPrincipal.IsPrincipal = true;
+            }
+
+            _context.TBL_TELEFONE.Remove(telefone);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok(new { mensagem = "Telefone removido com sucesso." });
         }
 
         // 📚 ENUM TIPOS LOGRADOURO
