@@ -15,28 +15,50 @@ builder.Services.AddDbContext<DataContext>(options =>
 
 
 //configuração do jwt para ativar a autenticação do token de login
-builder.Services.AddAuthentication(options =>
+/*builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 })
-.AddJwtBearer(options =>
+builder.Services.AddAuthentication("Bearer").AddJwtBearer(options =>
 {
+
     options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(key),
+
+            ValidateIssuer = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+
+            ValidateAudience = true,
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+
+            ValidateLifetime = true,
+            ClockSkew = TimeSpan.Zero // 🔥 importante
+        };
+});*/
+
+var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]);
+
+builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer("Bearer", options =>
     {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(key),
 
-        ValidIssuer = builder.Configuration["Jwt: Issuer"],
-        ValidAudience = builder.Configuration["Jwt:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(
-            Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])
-        )
-    };
-});
+            ValidateIssuer = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
 
+            ValidateAudience = true,
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+
+            ValidateLifetime = true,
+            ClockSkew = TimeSpan.Zero // 🔥 importante
+        };
+    });
 builder.Services.AddAuthentication();
 
 /*
@@ -89,7 +111,7 @@ var summaries = new[]
 
 app.MapGet("/weatherforecast", () =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
+    var forecast = Enumerable.Range(1, 5).Select(index =>
         new WeatherForecast
         (
             DateOnly.FromDateTime(DateTime.Now.AddDays(index)),

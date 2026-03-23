@@ -22,11 +22,14 @@ namespace Omnimarket.Api.Services
         {
             var claims = new[]
             {
-                new Claim(ClaimTypes.NameIdentifier, userId),
-                new Claim(ClaimTypes.Email, email)
-            };
+        new Claim(ClaimTypes.NameIdentifier, userId),
+        new Claim(ClaimTypes.Email, email),
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+    };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:key"]));
+            var key = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(_configuration["Jwt:Key"])
+            );
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
@@ -34,7 +37,7 @@ namespace Omnimarket.Api.Services
                 issuer: _configuration["Jwt:Issuer"],
                 audience: _configuration["Jwt:Audience"],
                 claims: claims,
-                expires: DateTime.Now.AddHours(2),
+                expires: DateTime.UtcNow.AddHours(2), // 🔥 importante
                 signingCredentials: creds
             );
 
