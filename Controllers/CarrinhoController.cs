@@ -47,6 +47,18 @@ namespace Omni.Controllers
         {
             var usuarioId = int.Parse(User.FindFirst("id")!.Value);
 
+            // 🔥 BUSCAR PRODUTO
+            var produto = await _context.TBL_PRODUTO
+                .FirstOrDefaultAsync(p => p.Id == dto.ProdutoId);
+
+            if (produto == null)
+                return NotFound(new { mensagem = "Produto não encontrado." });
+
+            // 🚫 REGRA: NÃO PODE COMPRAR O PRÓPRIO PRODUTO
+            if (produto.UsuarioId == usuarioId)
+                return BadRequest(new { mensagem = "Você não pode comprar seu próprio produto." });
+
+            // 🛒 BUSCAR OU CRIAR CARRINHO
             var carrinho = await _context.TBL_CARRINHO
                 .Include(c => c.Itens)
                 .FirstOrDefaultAsync(c => c.UsuarioId == usuarioId);
@@ -80,7 +92,6 @@ namespace Omni.Controllers
 
             return Ok(new { mensagem = "Item adicionado ao carrinho" });
         }
-
         // ❌ REMOVER ITEM
         [HttpDelete("{produtoId:int}")]
         [Authorize]

@@ -1,18 +1,40 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Omnimarket.Api.Models.Entidades
 {
     public class ItensPedido
     {
+        [Key]
         public int Id { get; set; }
-        public int ProdutoId { get; set; }
+
+        // 🔗 Pedido
+        [Required]
         public int PedidoId { get; set; }
-        public int QtdItens { get; set; }
-        public decimal ValorUnitario { get; set; }
-        public decimal ValorSubtotal { get; set; }
-        public Pedido Pedido { get; set; }
+
+        [ForeignKey("PedidoId")]
+        public Pedido Pedido { get; set; } = null!;
+
+        // 🔗 Produto
+        [Required(ErrorMessage = "Produto é obrigatório.")]
+        public int ProdutoId { get; set; }
+
+        [ForeignKey("ProdutoId")]
+        public Produto Produto { get; set; } = null!;
+
+        // 🔢 Quantidade
+        [Required]
+        [Range(1, int.MaxValue, ErrorMessage = "Quantidade deve ser maior que 0.")]
+        public int Quantidade { get; set; }
+
+        // 💰 Preço unitário no momento da compra
+        [Required]
+        [Range(0.01, double.MaxValue, ErrorMessage = "Preço inválido.")]
+        public decimal PrecoUnitario { get; set; }
+
+        // 💰 Total do item
+        [Required]
+        [Range(0.01, double.MaxValue)]
+        public decimal ValorTotal { get; set; }
     }
 }
