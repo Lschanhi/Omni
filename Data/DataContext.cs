@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Omni.Models.Entidades;
 using Omnimarket.Api.Models;
 using Omnimarket.Api.Models.Entidades;
 
 namespace Omnimarket.Api.Data
 {
-    public class DataContext: DbContext
+    public class DataContext : DbContext
     {
-         public DataContext (DbContextOptions<DataContext> options) : base(options)
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
-            
+
         }
         public DbSet<Usuario> TBL_USUARIO { get; set; }
         public DbSet<Endereco> TBL_ENDERECO { get; set; }
@@ -21,6 +22,8 @@ namespace Omnimarket.Api.Data
         public DbSet<ProdutoMidia> ProdutoMidia => Set<ProdutoMidia>();
         public DbSet<Pedido> TBL_PEDIDO { get; set; }
         public DbSet<ItensPedido> TBL_ITENS_PEDIDO { get; set; }
+        public DbSet<Carrinho> TBL_CARRINHO { get; set; }
+        public DbSet<ItemCarrinho> TBL_ITEM_CARRINHO { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -52,11 +55,11 @@ namespace Omnimarket.Api.Data
                 .Property(e => e.TipoLogradouro)
                 .HasConversion<string>();
 
-                modelBuilder.Entity<Produto>()
-                .HasMany(p => p.Midias)
-                .WithOne(m => m.Produto)
-                .HasForeignKey(m => m.ProdutoId)
-                .OnDelete(DeleteBehavior.Cascade); // se deletar produto, apaga mídias
+            modelBuilder.Entity<Produto>()
+            .HasMany(p => p.Midias)
+            .WithOne(m => m.Produto)
+            .HasForeignKey(m => m.ProdutoId)
+            .OnDelete(DeleteBehavior.Cascade); // se deletar produto, apaga mídias
 
             base.OnModelCreating(modelBuilder);
 
@@ -66,6 +69,6 @@ namespace Omnimarket.Api.Data
         {
             configurationBuilder.Properties<string>().HaveColumnType("varchar").HaveMaxLength(200);
         }
-        
+
     }
 }
