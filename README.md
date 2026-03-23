@@ -39,9 +39,9 @@ A plataforma foi construída sobre o ecossistema .NET, garantindo alta performan
 
 ### 🎓 Informações Acadêmicas
 
-**Instituição:** ETEC [Nome da sua Unidade]
+**Instituição:** ETEC PROFESSOR HORÁCIO AUGUSTO DA SILVEIRA
 **Curso:** Técnico em Desenvolvimento de Sistemas
-**Semestre:** 2º Semestre / 2026
+**Semestre:** 3º Semestre / 2026
 
 **Equipe de Desenvolvimento:**
 *   [Seu Nome]
