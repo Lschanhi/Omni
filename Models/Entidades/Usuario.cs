@@ -2,10 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 using Omnimarket.Api.Models.Entidades;
 
 namespace Omnimarket.Api.Models
 {
+
+    [Index(nameof(Email), IsUnique = true)]
+    [Index(nameof(Cpf), IsUnique = true)]
     public class Usuario
     {
         [Key]
@@ -46,6 +50,9 @@ namespace Omnimarket.Api.Models
         // ❌ Token não deve ficar no banco
         [NotMapped]
         public string Token { get; set; } = string.Empty;
+
+        public bool AceitouTermos { get; set; }
+        public DateTime? DataAceiteTermos { get; set; }
 
         // 📞 Relacionamentos
         public List<Telefone> Telefones { get; set; } = new();

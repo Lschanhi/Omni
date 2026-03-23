@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Omnimarket.Api.Models.Dtos.Enderecos;
 using Omnimarket.Api.Models.Dtos.Telefones;
@@ -9,7 +7,7 @@ namespace Omnimarket.Api.Models.Dtos.Usuarios
     public class UsuarioRegistroDto
     {
         [Required(ErrorMessage = "CPF é obrigatório")]
-        [StringLength(14, MinimumLength = 11, ErrorMessage = "CPF deve ter entre 11 e 14 caracteres")]
+        [RegularExpression(@"^\d{11}$", ErrorMessage = "CPF deve conter 11 dígitos numéricos")]
         public string Cpf { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Nome é obrigatório")]
@@ -32,6 +30,10 @@ namespace Omnimarket.Api.Models.Dtos.Usuarios
         [Required(ErrorMessage = "Confirmação de senha é obrigatória")]
         [Compare("Password", ErrorMessage = "As senhas não coincidem")]
         public string ConfirmPassword { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Você deve aceitar os termos.")]
+        [Range(typeof(bool), "true", "true", ErrorMessage = "Você deve aceitar os termos.")]
+        public bool AceitouTermos { get; set; }
     }
 
     public class UsuarioRegistroComContatoDto : UsuarioRegistroDto
@@ -40,8 +42,7 @@ namespace Omnimarket.Api.Models.Dtos.Usuarios
         [MinLength(1, ErrorMessage = "Informe pelo menos 1 telefone.")]
         public List<UsuarioTelefoneDto> Telefones { get; set; } = new();
 
-        // Pelo menos 1 endereço é recomendado (melhor prática)
         [MinLength(1, ErrorMessage = "Informe pelo menos 1 endereço.")]
-        public List<UsuarioEnderecoDto>? Enderecos { get; set; } = new();
+        public List<UsuarioEnderecoDto> Enderecos { get; set; } = new();
     }
 }

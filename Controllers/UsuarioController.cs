@@ -90,7 +90,10 @@ namespace Omnimarket.Api.Controllers
                     Email = userDto.Email.ToLower().Trim(),
                     PasswordHash = hash,
                     PasswordSalt = salt,
-                    DataCadastro = DateTime.UtcNow
+                    DataCadastro = DateTime.UtcNow,
+                    // ✅ TERMOS
+                    AceitouTermos = userDto.AceitouTermos,
+                    DataAceiteTermos = DateTime.UtcNow
                 };
 
                 // 📞 Telefones
