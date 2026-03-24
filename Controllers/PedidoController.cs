@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Omnimarket.Api.Services;
 using Omnimarket.Api.Models.Dtos.Pedidos;
+using Omnimarket.Api.Utils;
 
 namespace Omnimarket.Api.Controllers
 {
@@ -62,13 +63,12 @@ namespace Omnimarket.Api.Controllers
 
         // ❌ CANCELAR PEDIDO
         [HttpPut("{id:int}/cancelar")]
-        public async Task<IActionResult> CancelarPedido(
-            int id,
-            [FromQuery] int usuarioId // 🔥 vem pela URL ?usuarioId=1
-        )
+        public async Task<IActionResult> CancelarPedido(int id) // 🔥 vem pela URL ?usuarioId=1 
         {
             try
             {
+                var usuarioId = User.GetUserId();
+
                 var cancelado = await _pedidoService.CancelarPedido(id, usuarioId);
 
                 if (!cancelado)
