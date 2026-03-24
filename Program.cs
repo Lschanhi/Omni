@@ -8,6 +8,8 @@ using Omnimarket.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]);
+
 // 🔗 BANCO DE DADOS
 builder.Services.AddDbContext<DataContext>(options =>
 {
@@ -22,6 +24,8 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
+    options.RequireHttpsMetadata = false;
+    options.SaveToken = true;
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
@@ -29,14 +33,12 @@ builder.Services.AddAuthentication(options =>
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
 
-        ValidIssuer = builder.Configuration["Jwt:Issuer"], // 🔥 corrigido (sem espaço)
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
         ValidAudience = builder.Configuration["Jwt:Audience"],
-
-        IssuerSigningKey = new SymmetricSecurityKey(
-            Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!)
-        )
+        IssuerSigningKey = new SymmetricSecurityKey(key)
     };
 });
+
 
 // ❌ REMOVIDO (estava duplicado)
 // builder.Services.AddAuthentication();
@@ -46,6 +48,7 @@ builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<TokenService>();
 builder.Services.AddScoped<PedidoService>();
+builder.Services.AddScoped<RegistrarService>();
 
 // 🔥 CPF SERVICE (DESCOMENTE QUANDO USAR)
 builder.Services.AddHttpClient<ICpfService, CpfService>();
