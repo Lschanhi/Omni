@@ -9,12 +9,11 @@ namespace Omnimarket.Api.Controllers
     public class AuthController : ControllerBase
     {
         private readonly AuthService _authService;
-        private readonly TokenService _tokenService;
 
-        public AuthController(AuthService authService, TokenService tokenService)
+        public AuthController(AuthService authService)
         {
             _authService = authService;
-            _tokenService = tokenService;
+         
         }
 
         // 🔐 LOGIN
@@ -23,13 +22,12 @@ namespace Omnimarket.Api.Controllers
         {
             try
             {
-                // 🔎 Validação básica
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                var usuario = await _authService.ValidarLogin(login);
+                var result = await _authService.Login(login);
 
-                if (usuario == null)
+                if (result == null)
                 {
                     return Unauthorized(new
                     {
@@ -37,30 +35,22 @@ namespace Omnimarket.Api.Controllers
                     });
                 }
 
-                var token = _tokenService.GerarToken(
-                    usuario.Email,
-                    usuario.Id.ToString()
-                );
-
                 return Ok(new
                 {
                     mensagem = "Login realizado com sucesso",
+                    token = result.Token,
                     usuario = new
                     {
-                        id = usuario.Id,
-                        nome = usuario.Nome,
-                        sobrenome = usuario.Sobrenome,
-                        email = usuario.Email
-                    },
-                    token
+                        nome = result.Nome,
+                        email = result.Email
+                    }
                 });
             }
             catch (Exception ex)
             {
                 return StatusCode(500, new
                 {
-                    mensagem = "Erro interno ao realizar login",
-                    detalhes = ex.Message
+                    mensagem = "Erro interno ao realizar login"
                 });
             }
         }

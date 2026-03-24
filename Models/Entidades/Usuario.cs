@@ -54,6 +54,8 @@ namespace Omnimarket.Api.Models
         public bool AceitouTermos { get; set; }
         public DateTime? DataAceiteTermos { get; set; }
 
+        public string Role { get; set; } = "User";
+
         // 📞 Relacionamentos
         public List<Telefone> Telefones { get; set; } = new();
         public List<Endereco> Enderecos { get; set; } = new();

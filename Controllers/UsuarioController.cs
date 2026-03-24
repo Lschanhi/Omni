@@ -15,11 +15,16 @@ namespace Omnimarket.Api.Controllers
     public class UsuarioController : ControllerBase
     {
         private readonly DataContext _context;
-
-        public UsuarioController(DataContext context)
+        private readonly RegistrarService _registrarService;
+        public UsuarioController(DataContext context, RegistrarService registrarService)
         {
             _context = context;
+            _registrarService = registrarService;
         }
+
+
+
+
 
         // 🔒 Pegar ID do usuário logado (JWT)
         private int GetUserId()
@@ -68,102 +73,25 @@ namespace Omnimarket.Api.Controllers
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                // 🔎 Validação CPF
-                if (!CpfValidador.ValidarCpf(userDto.Cpf))
-                    return BadRequest(new { mensagem = "CPF inválido." });
-
-                string cpfLimpo = userDto.Cpf.Replace(".", "").Replace("-", "").Trim();
-
-                if (await CpfExistente(cpfLimpo))
-                    return BadRequest(new { mensagem = "CPF já cadastrado." });
-
-                if (await EmailExistente(userDto.Email))
-                    return BadRequest(new { mensagem = "Email já cadastrado." });
-
-                // 🔐 Hash de senha
-                Criptografia.CriarPasswordHash(userDto.Password, out byte[] hash, out byte[] salt);
-
-                var novoUsuario = new Usuario
-                {
-                    Cpf = cpfLimpo,
-                    Nome = userDto.Nome.Trim(),
-                    Sobrenome = userDto.Sobrenome.Trim(),
-                    Email = userDto.Email.ToLower().Trim(),
-                    PasswordHash = hash,
-                    PasswordSalt = salt,
-                    DataCadastro = DateTime.UtcNow,
-                    // ✅ TERMOS
-                    AceitouTermos = userDto.AceitouTermos,
-                    DataAceiteTermos = DateTime.UtcNow
-                };
-
-                // 📞 Telefones
-                for (int i = 0; i < userDto.Telefones.Count; i++)
-                {
-                    var t = userDto.Telefones[i];
-
-                    var r = ValidadorTelefone.ValidarCelularBr(t.Ddd, t.Numero);
-                    if (!r.Valido)
-                        return BadRequest(new { mensagem = $"Telefone inválido (item {i + 1})" });
-
-                    novoUsuario.Telefones.Add(new Telefone
-                    {
-                        NumeroE164 = r.E164!,
-                        IsPrincipal = t.IsPrincipal ?? (i == 0)
-                    });
-                }
-
-                // 🏠 Endereços (opcional mas recomendado)
-                if (userDto.Enderecos != null && userDto.Enderecos.Count > 0)
-                {
-                    for (int i = 0; i < userDto.Enderecos.Count; i++)
-                    {
-                        var e = userDto.Enderecos[i];
-
-                        novoUsuario.Enderecos.Add(new Endereco
-                        {
-                            TipoLogradouro = e.TipoLogradouro,
-                            NomeEndereco = e.NomeEndereco,
-                            Numero = e.Numero,
-                            Cep = e.Cep,
-                            Cidade = e.Cidade,
-                            Uf = e.Uf,
-                            IsPrincipal = e.IsPrincipal ?? (i == 0)
-                        });
-                    }
-                }
-
-                await _context.TBL_USUARIO.AddAsync(novoUsuario);
-                await _context.SaveChangesAsync();
+                var usuario = await _registrarService.RegistrarUsuario(userDto);
 
                 return Ok(new
                 {
                     mensagem = "Usuário registrado com sucesso!",
                     usuario = new
                     {
-                        id = novoUsuario.Id,
-                        nome = $"{novoUsuario.Nome} {novoUsuario.Sobrenome}",
-                        email = novoUsuario.Email
+                        id = usuario.Id,
+                        nome = $"{usuario.Nome} {usuario.Sobrenome}",
+                        email = usuario.Email
                     }
-                });
-            }
-            catch (DbUpdateException dbEx)
-            {
-                return StatusCode(500, new
-                {
-                    mensagem = "Erro ao salvar no banco.",
-                    detalhes = dbEx.InnerException?.Message ?? dbEx.Message
                 });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new
-                {
-                    mensagem = "Erro interno.",
-                    detalhes = ex.Message
-                });
+                return BadRequest(new { mensagem = ex.Message });
             }
         }
+        
 
         [HttpPut("{id:int}")]
         public async Task<IActionResult> AtualizarUsuario(int id, [FromBody] UsuarioAtualizarDto dto)
