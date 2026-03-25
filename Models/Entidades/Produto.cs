@@ -1,43 +1,46 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+using Omnimarket.Api.Models.Enum;
 
 namespace Omnimarket.Api.Models.Entidades
 {
     public class Produto
-{
-    public int Id { get; set; }
+    {
+        public int Id { get; set; }
 
-    [Required]
-    public int UsuarioId { get; set; }
-    public Usuario Usuario { get; set; }
+        [Required]
+        public int UsuarioId { get; set; }
 
-    [Required, StringLength(50)]
-    public string Nome { get; set; } = string.Empty;
+        public Usuario Usuario { get; set; } = null!;
 
-    [Range(0.01, double.MaxValue)]
-    public decimal Preco { get; set; }
+        [Required, StringLength(50)]
+        public string Nome { get; set; } = string.Empty;
 
-    [Range(0, int.MaxValue)]
-    public int Estoque { get; set; }
+        [Required, StringLength(100)]
+        public string Categoria { get; set; } = string.Empty;
 
-    public bool Disponivel => Estoque > 0;
+        [Required, StringLength(40)]
+        public string Sku { get; set; } = string.Empty;
 
-    [StringLength(100)]
-    public string? Descricao { get; set; }
+        [Range(0.01, double.MaxValue)]
+        public decimal Preco { get; set; }
 
-    public double MediaAvaliacao { get; set; }
-    public int TotalAvaliacoes { get; set; }
+        [Range(0, int.MaxValue)]
+        public int Estoque { get; set; }
 
-    public DateTimeOffset DtCriacao { get; set; } = DateTimeOffset.UtcNow;
-    public DateTimeOffset? DtAtualizacao { get; set; }
+        public bool Disponivel => StatusPublicacao == StatusProduto.Publicado && Estoque > 0;
 
-    public ICollection<ProdutoMidia> Midias { get; set; } = new List<ProdutoMidia>();
+        [StringLength(500)]
+        public string? Descricao { get; set; }
 
-    // Futuro ideal
-    // public ICollection<Avaliacao> Avaliacoes { get; set; }
-    // public ICollection<Comentario> Comentarios { get; set; }
-}
+        [Required]
+        public StatusProduto StatusPublicacao { get; set; } = StatusProduto.Publicado;
+
+        public double MediaAvaliacao { get; set; }
+        public int TotalAvaliacoes { get; set; }
+
+        public DateTimeOffset DtCriacao { get; set; } = DateTimeOffset.UtcNow;
+        public DateTimeOffset? DtAtualizacao { get; set; }
+
+        public ICollection<ProdutoMidia> Midias { get; set; } = new List<ProdutoMidia>();
+    }
 }

@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Omnimarket.Api.Data;
 using Omnimarket.Api.Models.Dtos.Produtos;
 using Omnimarket.Api.Models.Entidades;
+using Omnimarket.Api.Models.Enum;
 using Omnimarket.Api.Services.Interfaces;
 
 namespace Omnimarket.Api.Services
@@ -15,32 +16,39 @@ namespace Omnimarket.Api.Services
             _context = context;
         }
 
-        // Converte todas as entidades para DTOs de leitura antes de devolver ao controller.
         public async Task<IEnumerable<ProdutoLeituraDto>> GetAllAsync()
         {
-            var produtos = await _context.TBL_PRODUTO.ToListAsync();
+            var produtos = await BaseQuery()
+                .OrderBy(p => p.Nome)
+                .ToListAsync();
+
             return produtos.Select(MapToDto);
         }
 
-        // Busca um produto por id e retorna null quando ele nao existe.
         public async Task<ProdutoLeituraDto?> GetByIdAsync(int id)
         {
-            var produto = await _context.TBL_PRODUTO.FindAsync(id);
+            var produto = await BaseQuery()
+                .FirstOrDefaultAsync(p => p.Id == id);
+
             return produto == null ? null : MapToDto(produto);
         }
 
-        // Cria um novo produto e o associa ao usuario autenticado.
         public async Task<ProdutoLeituraDto> CreateAsync(ProdutoCriacaoDto dto, int usuarioId)
         {
-            if (await _context.TBL_PRODUTO.AnyAsync(p => p.Nome == dto.Nome))
-                throw new Exception("Ja existe um produto com esse nome.");
+            var sku = dto.Sku.Trim().ToUpperInvariant();
+
+            if (await _context.TBL_PRODUTO.AnyAsync(p => p.Sku == sku))
+                throw new Exception("Ja existe um produto com esse SKU.");
 
             var produto = new Produto
             {
                 Nome = dto.Nome.Trim(),
+                Categoria = dto.Categoria.Trim(),
+                Sku = sku,
                 Preco = dto.Preco,
                 Estoque = dto.Estoque,
-                Descricao = dto.Descricao,
+                Descricao = dto.Descricao?.Trim(),
+                StatusPublicacao = dto.StatusPublicacao,
                 UsuarioId = usuarioId,
                 DtCriacao = DateTimeOffset.UtcNow
             };
@@ -51,10 +59,11 @@ namespace Omnimarket.Api.Services
             return MapToDto(produto);
         }
 
-        // Atualiza somente produtos do proprio usuario para evitar edicao indevida.
         public async Task<bool> UpdateAsync(int id, ProdutoAtualizarDto dto, int usuarioId)
         {
-            var produto = await _context.TBL_PRODUTO.FindAsync(id);
+            var produto = await _context.TBL_PRODUTO
+                .Include(p => p.Midias)
+                .FirstOrDefaultAsync(p => p.Id == id);
 
             if (produto == null)
                 return false;
@@ -62,13 +71,18 @@ namespace Omnimarket.Api.Services
             if (produto.UsuarioId != usuarioId)
                 throw new UnauthorizedAccessException("Voce nao pode editar este produto.");
 
-            if (await _context.TBL_PRODUTO.AnyAsync(p => p.Nome == dto.Nome && p.Id != id))
-                throw new Exception("Ja existe outro produto com esse nome.");
+            var sku = dto.Sku.Trim().ToUpperInvariant();
+
+            if (await _context.TBL_PRODUTO.AnyAsync(p => p.Sku == sku && p.Id != id))
+                throw new Exception("Ja existe outro produto com esse SKU.");
 
             produto.Nome = dto.Nome.Trim();
+            produto.Categoria = dto.Categoria.Trim();
+            produto.Sku = sku;
             produto.Preco = dto.Preco;
             produto.Estoque = dto.Estoque;
-            produto.Descricao = dto.Descricao;
+            produto.Descricao = dto.Descricao?.Trim();
+            produto.StatusPublicacao = dto.StatusPublicacao;
             produto.DtAtualizacao = DateTimeOffset.UtcNow;
 
             await _context.SaveChangesAsync();
@@ -76,7 +90,6 @@ namespace Omnimarket.Api.Services
             return true;
         }
 
-        // Exclui um produto apenas quando o usuario autenticado e o dono do registro.
         public async Task<bool> DeleteAsync(int id, int usuarioId)
         {
             var produto = await _context.TBL_PRODUTO.FindAsync(id);
@@ -93,14 +106,24 @@ namespace Omnimarket.Api.Services
             return true;
         }
 
-        // Monta uma consulta dinamica com filtros e pagina os resultados.
         public async Task<PageResult<ProdutoLeituraDto>> GetPagedAsync(ProdutoFiltroDto filtro)
         {
-            var query = _context.TBL_PRODUTO.AsQueryable();
+            var query = BaseQuery();
 
             if (!string.IsNullOrWhiteSpace(filtro.Nome))
             {
                 query = query.Where(p => EF.Functions.Like(p.Nome, $"%{filtro.Nome}%"));
+            }
+
+            if (!string.IsNullOrWhiteSpace(filtro.Categoria))
+            {
+                query = query.Where(p => p.Categoria == filtro.Categoria.Trim());
+            }
+
+            if (!string.IsNullOrWhiteSpace(filtro.Sku))
+            {
+                var sku = filtro.Sku.Trim().ToUpperInvariant();
+                query = query.Where(p => p.Sku == sku);
             }
 
             if (filtro.MinPreco.HasValue)
@@ -111,6 +134,16 @@ namespace Omnimarket.Api.Services
             if (filtro.MaxPreco.HasValue)
             {
                 query = query.Where(p => p.Preco <= filtro.MaxPreco.Value);
+            }
+
+            if (filtro.StatusPublicacao.HasValue)
+            {
+                query = query.Where(p => p.StatusPublicacao == filtro.StatusPublicacao.Value);
+            }
+
+            if (filtro.SomenteDisponiveis)
+            {
+                query = query.Where(p => p.StatusPublicacao == StatusProduto.Publicado && p.Estoque > 0);
             }
 
             var total = await query.CountAsync();
@@ -130,21 +163,35 @@ namespace Omnimarket.Api.Services
             };
         }
 
-        // Mantem a transformacao entidade -> DTO em um unico lugar para evitar repeticao.
+        private IQueryable<Produto> BaseQuery()
+        {
+            return _context.TBL_PRODUTO
+                .Include(p => p.Midias)
+                .AsQueryable();
+        }
+
         private static ProdutoLeituraDto MapToDto(Produto produto)
         {
             return new ProdutoLeituraDto
             {
                 Id = produto.Id,
                 Nome = produto.Nome,
+                Categoria = produto.Categoria,
+                Sku = produto.Sku,
                 Preco = produto.Preco,
                 Estoque = produto.Estoque,
                 Disponivel = produto.Disponivel,
+                StatusPublicacao = produto.StatusPublicacao,
                 Descricao = produto.Descricao,
                 MediaAvaliacao = produto.MediaAvaliacao,
                 TotalAvaliacoes = produto.TotalAvaliacoes,
                 DtCriacao = produto.DtCriacao,
-                DtAtualizacao = produto.DtAtualizacao
+                DtAtualizacao = produto.DtAtualizacao,
+                Imagens = produto.Midias
+                    .OrderBy(m => m.Ordem)
+                    .Where(m => m.Tipo == TipoMidiaProduto.Foto)
+                    .Select(m => m.Url)
+                    .ToList()
             };
         }
     }
