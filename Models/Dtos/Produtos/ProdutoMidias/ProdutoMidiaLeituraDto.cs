@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Omnimarket.Api.Models.Enum;
 
 namespace Omnimarket.Api.Models.Dtos.Produtos.Midias
@@ -11,6 +7,7 @@ namespace Omnimarket.Api.Models.Dtos.Produtos.Midias
         public int Id { get; set; }
         public TipoMidiaProduto Tipo { get; set; }
         public string Url { get; set; } = string.Empty;
+        public string? ContentType { get; set; }
         public int Ordem { get; set; }
     }
 }

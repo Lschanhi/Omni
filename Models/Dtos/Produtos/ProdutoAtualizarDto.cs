@@ -1,27 +1,31 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Omnimarket.Api.Models.Enum;
 
 namespace Omnimarket.Api.Models.Dtos.Produtos
 {
-   public class ProdutoAtualizarDto
-{
-    [Required]
-    [StringLength(50)]
-    public string Nome { get; set; } = string.Empty;
+    public class ProdutoAtualizarDto
+    {
+        [Required]
+        [StringLength(50)]
+        public string Nome { get; set; } = string.Empty;
 
-    [Range(0.01, double.MaxValue, ErrorMessage = "Preço deve ser maior que 0.")]
-    public decimal Preco { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string Categoria { get; set; } = string.Empty;
 
-    [StringLength(100)]
-    public string? Descricao { get; set; }
+        [Required]
+        [StringLength(40)]
+        public string Sku { get; set; } = string.Empty;
 
-    [Range(0, int.MaxValue, ErrorMessage = "Quantidade não pode ser negativa.")]
-    public int Estoque { get; set; }
+        [Range(0.01, double.MaxValue, ErrorMessage = "Preco deve ser maior que 0.")]
+        public decimal Preco { get; set; }
 
-    // Melhor remover e tratar via endpoint separado
-    // public IFormFile? Foto { get; set; }
-}
+        [StringLength(500)]
+        public string? Descricao { get; set; }
+
+        [Range(0, int.MaxValue, ErrorMessage = "Quantidade nao pode ser negativa.")]
+        public int Estoque { get; set; }
+
+        public StatusProduto StatusPublicacao { get; set; } = StatusProduto.Publicado;
+    }
 }

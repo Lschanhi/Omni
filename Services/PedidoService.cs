@@ -1,8 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Omnimarket.Api.Data;
+using Omnimarket.Api.Models;
 using Omnimarket.Api.Models.Dtos.Pedidos;
 using Omnimarket.Api.Models.Entidades;
 using Omnimarket.Api.Models.Enum;
+using Omnimarket.Api.Utils;
 
 namespace Omnimarket.Api.Services
 {
@@ -15,10 +17,8 @@ namespace Omnimarket.Api.Services
             _context = context;
         }
 
-        // Monta e persiste um novo pedido usando o usuario autenticado como dono da compra.
         public async Task<Pedido> CriarPedido(int usuarioId, PedidoDto dto)
         {
-            // Antes de criar o pedido, garante que o usuario existe no banco.
             var usuarioExiste = await _context.TBL_USUARIO
                 .AnyAsync(u => u.Id == usuarioId);
 
@@ -28,39 +28,74 @@ namespace Omnimarket.Api.Services
             if (dto.Itens == null || dto.Itens.Count == 0)
                 throw new Exception("Pedido deve conter pelo menos 1 item.");
 
+            var tipoEntregaId = dto.TipoEntregaId > 0 ? dto.TipoEntregaId : dto.TipoEntrgaId;
+            if (tipoEntregaId <= 0)
+                throw new Exception("Tipo de entrega invalido.");
+
+            var enderecoEntrega = await ResolverEnderecoEntrega(usuarioId, dto.EnderecoId);
+
+            var itensAgrupados = dto.Itens
+                .GroupBy(i => i.ProdutoId)
+                .Select(g => new
+                {
+                    ProdutoId = g.Key,
+                    Quantidade = g.Sum(x => x.QtdItens)
+                })
+                .ToList();
+
+            if (itensAgrupados.Any(i => i.Quantidade <= 0))
+                throw new Exception("Quantidade invalida em um ou mais itens do pedido.");
+
+            var produtoIds = itensAgrupados
+                .Select(i => i.ProdutoId)
+                .Distinct()
+                .ToList();
+
+            var produtos = await _context.TBL_PRODUTO
+                .Where(p => produtoIds.Contains(p.Id))
+                .ToDictionaryAsync(p => p.Id);
+
             var pedido = new Pedido
             {
                 UsuarioId = usuarioId,
-                TipoEntregaId = dto.TipoEntrgaId,
+                TipoLogradouroEntrega = EnumExtensions.GetDisplayName(enderecoEntrega.TipoLogradouro),
+                NomeEnderecoEntrega = enderecoEntrega.NomeEndereco,
+                NumeroEntrega = enderecoEntrega.Numero,
+                ComplementoEntrega = enderecoEntrega.Complemento,
+                CepEntrega = enderecoEntrega.Cep,
+                CidadeEntrega = enderecoEntrega.Cidade,
+                UfEntrega = enderecoEntrega.Uf,
+                TipoEntregaId = tipoEntregaId,
                 Observacao = dto.Observacao,
                 StatusPedidosId = StatusPedido.Pendente,
                 DataPedido = DateTime.UtcNow
             };
 
-            // Cada item do DTO e validado e convertido para a entidade persistida.
-            foreach (var item in dto.Itens)
+            foreach (var item in itensAgrupados)
             {
-                var produto = await _context.TBL_PRODUTO
-                    .FirstOrDefaultAsync(p => p.Id == item.ProdutoId);
-
-                if (produto == null)
+                if (!produtos.TryGetValue(item.ProdutoId, out var produto))
                     throw new Exception($"Produto {item.ProdutoId} nao encontrado.");
 
-                if (item.QtdItens <= 0)
-                    throw new Exception($"Quantidade invalida para o produto {item.ProdutoId}.");
+                if (produto.UsuarioId == usuarioId)
+                    throw new Exception($"Voce nao pode comprar o proprio produto {item.ProdutoId}.");
 
-                var itemPedido = new ItensPedido
+                if (produto.StatusPublicacao != StatusProduto.Publicado)
+                    throw new Exception($"Produto {item.ProdutoId} nao esta publicado para venda.");
+
+                if (produto.Estoque < item.Quantidade)
+                    throw new Exception($"Estoque insuficiente para o produto {item.ProdutoId}.");
+
+                produto.Estoque -= item.Quantidade;
+
+                pedido.Itens.Add(new ItensPedido
                 {
                     ProdutoId = produto.Id,
-                    Quantidade = item.QtdItens,
+                    Quantidade = item.Quantidade,
                     PrecoUnitario = produto.Preco,
-                    ValorTotal = item.QtdItens * produto.Preco
-                };
-
-                pedido.Itens.Add(itemPedido);
+                    ValorTotal = item.Quantidade * produto.Preco
+                });
             }
 
-            // Os totais sao calculados no servidor para evitar manipulacao pelo cliente.
             pedido.ValorTotalProdutos = pedido.Itens.Sum(i => i.ValorTotal);
             pedido.ValorFrete = 0;
             pedido.ValorTotalPedido = pedido.ValorTotalProdutos + pedido.ValorFrete;
@@ -71,27 +106,28 @@ namespace Omnimarket.Api.Services
             return pedido;
         }
 
-        // So devolve o pedido se ele pertencer ao usuario autenticado.
         public async Task<Pedido?> BuscarPedido(int id, int usuarioId)
         {
             return await _context.TBL_PEDIDO
                 .Include(p => p.Itens)
+                .ThenInclude(i => i.Produto)
                 .FirstOrDefaultAsync(p => p.Id == id && p.UsuarioId == usuarioId);
         }
 
-        // Recupera o historico de pedidos do usuario.
         public async Task<List<Pedido>> ListarPedidosUsuario(int usuarioId)
         {
             return await _context.TBL_PEDIDO
                 .Where(p => p.UsuarioId == usuarioId)
                 .Include(p => p.Itens)
+                .ThenInclude(i => i.Produto)
+                .OrderByDescending(p => p.DataPedido)
                 .ToListAsync();
         }
 
-        // Cancela um pedido existente validando dono e status atual.
         public async Task<bool> CancelarPedido(int pedidoId, int usuarioId)
         {
             var pedido = await _context.TBL_PEDIDO
+                .Include(p => p.Itens)
                 .FirstOrDefaultAsync(p => p.Id == pedidoId);
 
             if (pedido == null)
@@ -106,11 +142,52 @@ namespace Omnimarket.Api.Services
             if (pedido.StatusPedidosId == StatusPedido.Entregue)
                 throw new Exception("Pedido ja entregue nao pode ser cancelado.");
 
-            pedido.StatusPedidosId = StatusPedido.Cancelado;
+            var produtoIds = pedido.Itens
+                .Select(i => i.ProdutoId)
+                .Distinct()
+                .ToList();
 
+            var produtos = await _context.TBL_PRODUTO
+                .Where(p => produtoIds.Contains(p.Id))
+                .ToDictionaryAsync(p => p.Id);
+
+            foreach (var item in pedido.Itens)
+            {
+                if (produtos.TryGetValue(item.ProdutoId, out var produto))
+                    produto.Estoque += item.Quantidade;
+            }
+
+            pedido.StatusPedidosId = StatusPedido.Cancelado;
             await _context.SaveChangesAsync();
 
             return true;
+        }
+
+        private async Task<Endereco> ResolverEnderecoEntrega(int usuarioId, int? enderecoId)
+        {
+            var query = _context.TBL_ENDERECO
+                .AsNoTracking()
+                .Where(e => e.UsuarioId == usuarioId);
+
+            if (enderecoId.HasValue && enderecoId.Value > 0)
+            {
+                var enderecoSelecionado = await query.FirstOrDefaultAsync(e => e.Id == enderecoId.Value);
+
+                if (enderecoSelecionado == null)
+                    throw new Exception("Endereco de entrega nao encontrado.");
+
+                return enderecoSelecionado;
+            }
+
+            var enderecoPadrao = await query
+                .OrderByDescending(e => e.IsPrincipal)
+                .ThenBy(e => e.Id)
+                .FirstOrDefaultAsync();
+
+            if (enderecoPadrao == null)
+                throw new Exception("Nenhum endereco de entrega foi encontrado para o usuario.");
+
+            return enderecoPadrao;
         }
     }
 }

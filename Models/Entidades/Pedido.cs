@@ -9,41 +9,61 @@ namespace Omnimarket.Api.Models.Entidades
         [Key]
         public int Id { get; set; }
 
-        // 🔗 Usuário (comprador)
-        [Required(ErrorMessage = "Usuário é obrigatório.")]
+        [Required(ErrorMessage = "Usuario e obrigatorio.")]
         public int UsuarioId { get; set; }
 
         [ForeignKey("UsuarioId")]
         public Usuario Usuario { get; set; } = null!;
 
-        // 🚚 Tipo de entrega
-        [Required(ErrorMessage = "Tipo de entrega é obrigatório.")]
+        [Required]
+        [StringLength(50)]
+        public string TipoLogradouroEntrega { get; set; } = string.Empty;
+
+        [Required]
+        [StringLength(200)]
+        public string NomeEnderecoEntrega { get; set; } = string.Empty;
+
+        [Required]
+        [StringLength(20)]
+        public string NumeroEntrega { get; set; } = string.Empty;
+
+        [StringLength(80)]
+        public string? ComplementoEntrega { get; set; }
+
+        [Required]
+        [StringLength(8, MinimumLength = 8)]
+        public string CepEntrega { get; set; } = string.Empty;
+
+        [Required]
+        [StringLength(120)]
+        public string CidadeEntrega { get; set; } = string.Empty;
+
+        [Required]
+        [StringLength(2, MinimumLength = 2)]
+        public string UfEntrega { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Tipo de entrega e obrigatorio.")]
         public int TipoEntregaId { get; set; }
 
-        // 📦 Status do pedido
         [Required]
         public StatusPedido StatusPedidosId { get; set; }
 
-        // 💰 Valores
         [Required]
-        [Range(0, double.MaxValue, ErrorMessage = "Valor dos produtos inválido.")]
+        [Range(0, double.MaxValue, ErrorMessage = "Valor dos produtos invalido.")]
         public decimal ValorTotalProdutos { get; set; }
 
-        [Range(0, double.MaxValue, ErrorMessage = "Valor do frete inválido.")]
+        [Range(0, double.MaxValue, ErrorMessage = "Valor do frete invalido.")]
         public decimal ValorFrete { get; set; }
 
         [Required]
-        [Range(0, double.MaxValue, ErrorMessage = "Valor total inválido.")]
+        [Range(0, double.MaxValue, ErrorMessage = "Valor total invalido.")]
         public decimal ValorTotalPedido { get; set; }
 
-        // 📅 Data
         public DateTime DataPedido { get; set; } = DateTime.UtcNow;
 
-        // 📝 Observação
         [StringLength(500)]
         public string Observacao { get; set; } = string.Empty;
 
-        // 📦 Itens do pedido
         [MinLength(1, ErrorMessage = "O pedido deve ter pelo menos 1 item.")]
         public List<ItensPedido> Itens { get; set; } = new();
     }
