@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using Omnimarket.Api.Services;
 using Omnimarket.Api.Models.Dtos.Login;
+using Omnimarket.Api.Services;
 
 namespace Omnimarket.Api.Controllers
 {
@@ -13,10 +13,9 @@ namespace Omnimarket.Api.Controllers
         public AuthController(AuthService authService)
         {
             _authService = authService;
-         
         }
 
-        // 🔐 LOGIN
+        // Recebe email e senha, valida as credenciais e devolve o JWT ao cliente.
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDto login)
         {
@@ -46,7 +45,7 @@ namespace Omnimarket.Api.Controllers
                     }
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return StatusCode(500, new
                 {

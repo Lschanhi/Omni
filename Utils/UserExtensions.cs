@@ -1,19 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace Omnimarket.Api.Utils
 {
     public static class UserExtensions
     {
+        // Centraliza a leitura do id do usuario autenticado a partir das claims do token.
         public static int GetUserId(this ClaimsPrincipal user)
         {
-            var claim = user.FindFirst("id");
+            // Primeiro tenta o nome padrao do ASP.NET; o fallback "id" cobre tokens antigos.
+            var claim = user.FindFirst(ClaimTypes.NameIdentifier)
+                ?? user.FindFirst("id");
 
             if (claim == null)
-                throw new UnauthorizedAccessException("Usuário não autenticado.");
+                throw new UnauthorizedAccessException("Usuario nao autenticado.");
 
             return int.Parse(claim.Value);
         }

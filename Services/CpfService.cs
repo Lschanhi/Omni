@@ -1,6 +1,4 @@
-using System.Net.Http;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Omnimarket.Api.Models;
 
 namespace Omnimarket.Api.Services
@@ -19,16 +17,17 @@ namespace Omnimarket.Api.Services
             _httpClient = httpClient;
         }
 
+        // Consulta um CPF em um servico externo e devolve um objeto padronizado para a API.
         public async Task<CpfResposta> ConsultarCpf(string cpf)
         {
-            string cpfLimpo = cpf.Replace(".", "").Replace("-", "").Trim();
+            var cpfLimpo = cpf.Replace(".", "").Replace("-", "").Trim();
 
-            // 🔥 TESTE LOCAL (TCC)
+            // Atalho local usado durante desenvolvimento ou demonstracoes.
             var teste = TesteConsultaCpf(cpfLimpo);
             if (teste != null)
                 return teste;
 
-            string url = $"https://api.exemplo.com/v1/cpf/{cpfLimpo}";
+            var url = $"https://api.exemplo.com/v1/cpf/{cpfLimpo}";
 
             try
             {
@@ -39,7 +38,7 @@ namespace Omnimarket.Api.Services
                     return new CpfResposta
                     {
                         Sucesso = false,
-                        Erro = "CPF não encontrado ou erro na API externa"
+                        Erro = "CPF nao encontrado ou erro na API externa"
                     };
                 }
 
@@ -69,7 +68,7 @@ namespace Omnimarket.Api.Services
                 return new CpfResposta
                 {
                     Sucesso = false,
-                    Erro = "Erro de conexão com serviço externo"
+                    Erro = "Erro de conexao com servico externo"
                 };
             }
             catch (TaskCanceledException)
@@ -77,10 +76,10 @@ namespace Omnimarket.Api.Services
                 return new CpfResposta
                 {
                     Sucesso = false,
-                    Erro = "Tempo de requisição excedido"
+                    Erro = "Tempo de requisicao excedido"
                 };
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return new CpfResposta
                 {
@@ -90,7 +89,7 @@ namespace Omnimarket.Api.Services
             }
         }
 
-        // 🔥 MOCK PARA TCC / TESTE
+        // Mock simples para testes locais sem depender de API externa.
         private CpfResposta? TesteConsultaCpf(string cpf)
         {
             if (cpf == "12345678909")
@@ -98,7 +97,7 @@ namespace Omnimarket.Api.Services
                 return new CpfResposta
                 {
                     Sucesso = true,
-                    Nome = "USUÁRIO TESTE TCC"
+                    Nome = "USUARIO TESTE TCC"
                 };
             }
 

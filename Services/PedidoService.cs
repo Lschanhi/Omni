@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Omnimarket.Api.Data;
-using Omnimarket.Api.Models.Entidades;
 using Omnimarket.Api.Models.Dtos.Pedidos;
+using Omnimarket.Api.Models.Entidades;
 using Omnimarket.Api.Models.Enum;
 
 namespace Omnimarket.Api.Services
@@ -15,37 +15,39 @@ namespace Omnimarket.Api.Services
             _context = context;
         }
 
-        public async Task<Pedido> CriarPedido(PedidoDto dto)
+        // Monta e persiste um novo pedido usando o usuario autenticado como dono da compra.
+        public async Task<Pedido> CriarPedido(int usuarioId, PedidoDto dto)
         {
-            // 🔎 Validar usuário
+            // Antes de criar o pedido, garante que o usuario existe no banco.
             var usuarioExiste = await _context.TBL_USUARIO
-                .AnyAsync(u => u.Id == dto.UsuarioId);
+                .AnyAsync(u => u.Id == usuarioId);
 
             if (!usuarioExiste)
-                throw new Exception("Usuário não encontrado.");
+                throw new Exception("Usuario nao encontrado.");
 
             if (dto.Itens == null || dto.Itens.Count == 0)
                 throw new Exception("Pedido deve conter pelo menos 1 item.");
 
             var pedido = new Pedido
             {
-                UsuarioId = dto.UsuarioId,
+                UsuarioId = usuarioId,
                 TipoEntregaId = dto.TipoEntrgaId,
                 Observacao = dto.Observacao,
                 StatusPedidosId = StatusPedido.Pendente,
                 DataPedido = DateTime.UtcNow
             };
 
+            // Cada item do DTO e validado e convertido para a entidade persistida.
             foreach (var item in dto.Itens)
             {
                 var produto = await _context.TBL_PRODUTO
                     .FirstOrDefaultAsync(p => p.Id == item.ProdutoId);
 
                 if (produto == null)
-                    throw new Exception($"Produto {item.ProdutoId} não encontrado.");
+                    throw new Exception($"Produto {item.ProdutoId} nao encontrado.");
 
                 if (item.QtdItens <= 0)
-                    throw new Exception($"Quantidade inválida para o produto {item.ProdutoId}.");
+                    throw new Exception($"Quantidade invalida para o produto {item.ProdutoId}.");
 
                 var itemPedido = new ItensPedido
                 {
@@ -58,25 +60,26 @@ namespace Omnimarket.Api.Services
                 pedido.Itens.Add(itemPedido);
             }
 
-            // 💰 Cálculo automático (regra de negócio)
+            // Os totais sao calculados no servidor para evitar manipulacao pelo cliente.
             pedido.ValorTotalProdutos = pedido.Itens.Sum(i => i.ValorTotal);
-            pedido.ValorFrete = 0; // pode melhorar depois
+            pedido.ValorFrete = 0;
             pedido.ValorTotalPedido = pedido.ValorTotalProdutos + pedido.ValorFrete;
 
-            // 💾 Salva UMA vez só
             await _context.TBL_PEDIDO.AddAsync(pedido);
             await _context.SaveChangesAsync();
 
             return pedido;
         }
 
-        public async Task<Pedido?> BuscarPedido(int id)
+        // So devolve o pedido se ele pertencer ao usuario autenticado.
+        public async Task<Pedido?> BuscarPedido(int id, int usuarioId)
         {
             return await _context.TBL_PEDIDO
                 .Include(p => p.Itens)
-                .FirstOrDefaultAsync(p => p.Id == id);
+                .FirstOrDefaultAsync(p => p.Id == id && p.UsuarioId == usuarioId);
         }
 
+        // Recupera o historico de pedidos do usuario.
         public async Task<List<Pedido>> ListarPedidosUsuario(int usuarioId)
         {
             return await _context.TBL_PEDIDO
@@ -85,6 +88,7 @@ namespace Omnimarket.Api.Services
                 .ToListAsync();
         }
 
+        // Cancela um pedido existente validando dono e status atual.
         public async Task<bool> CancelarPedido(int pedidoId, int usuarioId)
         {
             var pedido = await _context.TBL_PEDIDO
@@ -94,13 +98,13 @@ namespace Omnimarket.Api.Services
                 return false;
 
             if (pedido.UsuarioId != usuarioId)
-                throw new Exception("Você não pode cancelar pedidos que não são seus.");
+                throw new Exception("Voce nao pode cancelar pedidos que nao sao seus.");
 
             if (pedido.StatusPedidosId == StatusPedido.Cancelado)
-                throw new Exception("Este pedido já está cancelado.");
+                throw new Exception("Este pedido ja esta cancelado.");
 
             if (pedido.StatusPedidosId == StatusPedido.Entregue)
-                throw new Exception("Pedido já entregue não pode ser cancelado.");
+                throw new Exception("Pedido ja entregue nao pode ser cancelado.");
 
             pedido.StatusPedidosId = StatusPedido.Cancelado;
 

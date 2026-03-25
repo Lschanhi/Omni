@@ -1,85 +1,115 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Omnimarket.Api.Models.Entidades;
-using Omnimarket.Api.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Omnimarket.Api.Models.Dtos.Produtos;
-using Omnimarket.Api.Services;
-using Omni.Models.Dtos.Produtos;
-
+using Omnimarket.Api.Services.Interfaces;
+using Omnimarket.Api.Utils;
 
 namespace Omnimarket.Api.Controllers
 {
-   [ApiController]
-[Route("api/[controller]")]
-public class ProdutoController : ControllerBase
-{
-    private readonly IProdutoService _service;
-
-    public ProdutoController(IProdutoService service)
+    [ApiController]
+    [Route("api/[controller]")]
+    public class ProdutoController : ControllerBase
     {
-        _service = service;
-    }
+        private readonly IProdutoService _service;
 
-    [HttpGet]
-    public async Task<IActionResult> Get()
-        => Ok(await _service.GetAllAsync());
+        public ProdutoController(IProdutoService service)
+        {
+            _service = service;
+        }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> Get(int id)
-    {
-        var produto = await _service.GetByIdAsync(id);
+        // Lista todos os produtos disponiveis.
+        [HttpGet]
+        public async Task<IActionResult> Get()
+            => Ok(await _service.GetAllAsync());
 
-        if (produto == null)
-            return NotFound();
+        // Busca um produto especifico pelo identificador.
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var produto = await _service.GetByIdAsync(id);
 
-        return Ok(produto);
-    }
+            if (produto == null)
+                return NotFound();
 
-    [HttpPost]
-    public async Task<IActionResult> Post(ProdutoCriacaoDto dto)
-    {
-        int usuarioId = 1; // depois vem do JWT
+            return Ok(produto);
+        }
 
-        var produto = await _service.CreateAsync(dto, usuarioId);
+        // Cria um produto vinculado ao usuario autenticado.
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Post([FromBody] ProdutoCriacaoDto dto)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
 
-        return CreatedAtAction(nameof(Get), new { id = produto.Id }, produto);
-    }
+                var usuarioId = User.GetUserId();
+                var produto = await _service.CreateAsync(dto, usuarioId);
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> Put(int id, ProdutoAtualizarDto dto)
-    {
-        var updated = await _service.UpdateAsync(id, dto);
+                return CreatedAtAction(nameof(Get), new { id = produto.Id }, produto);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { mensagem = ex.Message });
+            }
+        }
 
-        if (!updated)
-            return NotFound();
+        // Atualiza um produto existente, mas apenas se ele pertencer ao usuario logado.
+        [HttpPut("{id:int}")]
+        [Authorize]
+        public async Task<IActionResult> Put(int id, [FromBody] ProdutoAtualizarDto dto)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
 
-        return NoContent();
-    }
+                var usuarioId = User.GetUserId();
+                var updated = await _service.UpdateAsync(id, dto, usuarioId);
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(int id)
-    {
-        var deleted = await _service.DeleteAsync(id);
+                if (!updated)
+                    return NotFound();
 
-        if (!deleted)
-            return NotFound();
+                return NoContent();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return Forbid();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { mensagem = ex.Message });
+            }
+        }
 
-        return NoContent();
-    }
+        // Exclui um produto respeitando a mesma regra de autoria do update.
+        [HttpDelete("{id:int}")]
+        [Authorize]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                var usuarioId = User.GetUserId();
+                var deleted = await _service.DeleteAsync(id, usuarioId);
 
-    [HttpGet("filtro")]
-    public async Task<IActionResult> GetPaged([FromQuery] ProdutoFiltroDto filtro)
-    {
-    var result = await _service.GetPagedAsync(filtro);
-    return Ok(result);
-    }
-}
+                if (!deleted)
+                    return NotFound();
 
-    internal interface IProdutoService
-    {
+                return NoContent();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return Forbid();
+            }
+        }
+
+        // Retorna uma lista paginada com filtros simples de nome e faixa de preco.
+        [HttpGet("filtro")]
+        public async Task<IActionResult> GetPaged([FromQuery] ProdutoFiltroDto filtro)
+        {
+            var result = await _service.GetPagedAsync(filtro);
+            return Ok(result);
+        }
     }
 }

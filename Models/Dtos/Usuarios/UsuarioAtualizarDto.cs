@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Omni.Models.Dtos.Usuarios
+namespace Omnimarket.Api.Models.Dtos.Usuarios
 {
+    // DTO usado quando o cliente deseja atualizar dados basicos do usuario.
     public class UsuarioAtualizarDto
     {
         [Required]
@@ -20,7 +17,7 @@ namespace Omni.Models.Dtos.Usuarios
         [EmailAddress]
         public string Email { get; set; } = string.Empty;
 
-        // 🔐 opcional (só altera se enviar)
+        // Opcional: so troca a senha se o cliente enviar um novo valor.
         public string? Password { get; set; }
     }
 }
