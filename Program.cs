@@ -1,22 +1,24 @@
 using System.Text;
 using System.Text.Json.Serialization;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Omnimarket.Api.Data;
 using Omnimarket.Api.Services;
+using Omnimarket.Api.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]);
+// Chave usada para assinar e validar os tokens JWT da aplicacao.
+var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!);
 
-// 🔗 BANCO DE DADOS
+// Registra o contexto do Entity Framework apontando para o banco SQL Server.
 builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoLocal"));
 });
 
-// 🔐 JWT AUTH
+// Configura a autenticacao da API para usar JWT em todos os endpoints protegidos.
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -32,54 +34,48 @@ builder.Services.AddAuthentication(options =>
         ValidateAudience = true,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-
         ValidIssuer = builder.Configuration["Jwt:Issuer"],
         ValidAudience = builder.Configuration["Jwt:Audience"],
         IssuerSigningKey = new SymmetricSecurityKey(key)
     };
 });
 
-
-// ❌ REMOVIDO (estava duplicado)
-// builder.Services.AddAuthentication();
-
-// 📦 SERVICES
+// Servicos de negocio que serao injetados nos controllers.
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<TokenService>();
 builder.Services.AddScoped<PedidoService>();
 builder.Services.AddScoped<RegistrarService>();
+builder.Services.AddScoped<IProdutoService, ProdutoService>();
 
-// 🔥 CPF SERVICE (DESCOMENTE QUANDO USAR)
+// Cliente HTTP usado pelo servico externo de validacao de CPF.
 builder.Services.AddHttpClient<ICpfService, CpfService>();
 
-// 🎯 CONTROLLERS + ENUM COMO STRING
+// Configura os controllers e serializa enums como texto no JSON.
 builder.Services.AddControllers()
     .AddJsonOptions(opt =>
     {
         opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
     });
 
-// 📄 SWAGGER / OPENAPI
+// Swagger facilita a exploracao e o teste dos endpoints em desenvolvimento.
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// 🔐 ORDEM IMPORTANTE
+// Pipeline HTTP da aplicacao.
 app.UseHttpsRedirection();
-
-app.UseAuthentication(); // 🔥 primeiro
+app.UseAuthentication();
 app.UseAuthorization();
 
-// 📄 SWAGGER EM DEV
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-// 🎯 CONTROLLERS
+// Mapeia as rotas declaradas nos controllers.
 app.MapControllers();
 
 app.Run();

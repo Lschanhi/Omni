@@ -1,11 +1,13 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Omnimarket.Api.Services;
 using Omnimarket.Api.Models.Dtos.Pedidos;
+using Omnimarket.Api.Services;
 using Omnimarket.Api.Utils;
 
 namespace Omnimarket.Api.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/pedidos")]
     public class PedidoController : ControllerBase
     {
@@ -16,7 +18,7 @@ namespace Omnimarket.Api.Controllers
             _pedidoService = pedidoService;
         }
 
-        // 🧾 CRIAR PEDIDO
+        // Cria um pedido para o usuario autenticado a partir dos itens enviados no body.
         [HttpPost]
         public async Task<IActionResult> CriarPedido([FromBody] PedidoDto dto)
         {
@@ -25,7 +27,8 @@ namespace Omnimarket.Api.Controllers
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                var pedido = await _pedidoService.CriarPedido(dto);
+                var usuarioId = User.GetUserId();
+                var pedido = await _pedidoService.CriarPedido(usuarioId, dto);
 
                 return Ok(new
                 {
@@ -40,39 +43,44 @@ namespace Omnimarket.Api.Controllers
             }
         }
 
-        // 🔍 BUSCAR PEDIDO POR ID
+        // Busca um pedido especifico, mas somente se ele pertencer ao usuario logado.
         [HttpGet("{id:int}")]
         public async Task<IActionResult> BuscarPedido(int id)
         {
-            var pedido = await _pedidoService.BuscarPedido(id);
+            var usuarioId = User.GetUserId();
+            var pedido = await _pedidoService.BuscarPedido(id, usuarioId);
 
             if (pedido == null)
-                return NotFound(new { mensagem = "Pedido não encontrado." });
+                return NotFound(new { mensagem = "Pedido nao encontrado." });
 
             return Ok(pedido);
         }
 
-        // 📦 LISTAR PEDIDOS DE UM USUÁRIO
+        // Lista os pedidos do proprio usuario e bloqueia a consulta de terceiros.
         [HttpGet("usuario/{usuarioId:int}")]
         public async Task<IActionResult> ListarPedidoUsuario(int usuarioId)
         {
-            var pedidos = await _pedidoService.ListarPedidosUsuario(usuarioId);
+            var usuarioIdLogado = User.GetUserId();
+
+            if (usuarioId != usuarioIdLogado)
+                return Forbid();
+
+            var pedidos = await _pedidoService.ListarPedidosUsuario(usuarioIdLogado);
 
             return Ok(pedidos);
         }
 
-        // ❌ CANCELAR PEDIDO
+        // Cancela um pedido do usuario logado respeitando as regras do servico.
         [HttpPut("{id:int}/cancelar")]
-        public async Task<IActionResult> CancelarPedido(int id) // 🔥 vem pela URL ?usuarioId=1 
+        public async Task<IActionResult> CancelarPedido(int id)
         {
             try
             {
                 var usuarioId = User.GetUserId();
-
                 var cancelado = await _pedidoService.CancelarPedido(id, usuarioId);
 
                 if (!cancelado)
-                    return NotFound(new { mensagem = "Pedido não encontrado." });
+                    return NotFound(new { mensagem = "Pedido nao encontrado." });
 
                 return Ok(new { mensagem = "Pedido cancelado com sucesso!" });
             }

@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Omni.Models.Dtos.Carrinho;
 using Omni.Models.Entidades;
 using Omnimarket.Api.Data;
+using Omnimarket.Api.Utils;
 
 namespace Omni.Controllers
 {
@@ -22,13 +19,14 @@ namespace Omni.Controllers
             _context = context;
         }
 
-        // 🛒 VER CARRINHO
+        // Retorna o carrinho do usuario logado com os produtos ja carregados.
         [HttpGet]
         [Authorize]
         public async Task<IActionResult> ObterCarrinho()
         {
-            var usuarioId = int.Parse(User.FindFirst("id")!.Value);
+            var usuarioId = User.GetUserId();
 
+            // Include/ThenInclude traz itens e produto em uma unica consulta.
             var carrinho = await _context.TBL_CARRINHO
                 .Include(c => c.Itens)
                 .ThenInclude(i => i.Produto)
@@ -40,25 +38,25 @@ namespace Omni.Controllers
             return Ok(carrinho);
         }
 
-        // ➕ ADICIONAR ITEM
+        // Adiciona um item ao carrinho atual ou soma a quantidade se ele ja existir.
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> AdicionarItem([FromBody] CarrinhoAdicionarDto dto)
         {
-            var usuarioId = int.Parse(User.FindFirst("id")!.Value);
+            var usuarioId = User.GetUserId();
 
-            // 🔥 BUSCAR PRODUTO
+            // Confere se o produto informado existe.
             var produto = await _context.TBL_PRODUTO
                 .FirstOrDefaultAsync(p => p.Id == dto.ProdutoId);
 
             if (produto == null)
-                return NotFound(new { mensagem = "Produto não encontrado." });
+                return NotFound(new { mensagem = "Produto nao encontrado." });
 
-            // 🚫 REGRA: NÃO PODE COMPRAR O PRÓPRIO PRODUTO
+            // Regra de negocio: o vendedor nao pode comprar o proprio produto.
             if (produto.UsuarioId == usuarioId)
-                return BadRequest(new { mensagem = "Você não pode comprar seu próprio produto." });
+                return BadRequest(new { mensagem = "Voce nao pode comprar seu proprio produto." });
 
-            // 🛒 BUSCAR OU CRIAR CARRINHO
+            // Cada usuario possui um carrinho; se ainda nao existir, ele e criado.
             var carrinho = await _context.TBL_CARRINHO
                 .Include(c => c.Itens)
                 .FirstOrDefaultAsync(c => c.UsuarioId == usuarioId);
@@ -77,10 +75,12 @@ namespace Omni.Controllers
 
             if (item != null)
             {
+                // Se o item ja existe no carrinho, apenas soma a quantidade.
                 item.Quantidade += dto.Quantidade;
             }
             else
             {
+                // Caso contrario, cria uma nova linha no carrinho.
                 carrinho.Itens.Add(new ItemCarrinho
                 {
                     ProdutoId = dto.ProdutoId,
@@ -92,12 +92,13 @@ namespace Omni.Controllers
 
             return Ok(new { mensagem = "Item adicionado ao carrinho" });
         }
-        // ❌ REMOVER ITEM
+
+        // Remove um item especifico do carrinho do usuario logado.
         [HttpDelete("{produtoId:int}")]
         [Authorize]
         public async Task<IActionResult> RemoverItem(int produtoId)
         {
-            var usuarioId = int.Parse(User.FindFirst("id")!.Value);
+            var usuarioId = User.GetUserId();
 
             var carrinho = await _context.TBL_CARRINHO
                 .Include(c => c.Itens)

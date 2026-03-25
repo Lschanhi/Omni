@@ -1,14 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
-using System.Security.Claims;
 using Omnimarket.Api.Data;
 using Omnimarket.Api.Models;
+using Omnimarket.Api.Models.Dtos.Enderecos;
 using Omnimarket.Api.Models.Enum;
 using Omnimarket.Api.Utils;
-using Omnimarket.Api.Models.Dtos.Enderecos;
-using Omnimarket.Api.Models.Dtos.Telefones;
-
 
 namespace Omnimarket.Api.Controllers
 {
@@ -24,17 +21,11 @@ namespace Omnimarket.Api.Controllers
             _context = context;
         }
 
-        // 🔐 Pegar ID do usuário logado
-        private int GetUserId()
-        {
-            return int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
-        }
-
-        // 📋 LISTAR
+        // Lista todos os enderecos do usuario logado.
         [HttpGet]
         public async Task<IActionResult> Listar(int usuarioId)
         {
-            if (usuarioId != GetUserId())
+            if (usuarioId != User.GetUserId())
                 return Forbid();
 
             var enderecos = await _context.TBL_ENDERECO
@@ -56,11 +47,11 @@ namespace Omnimarket.Api.Controllers
             return Ok(enderecos);
         }
 
-        // 🔍 OBTER POR ID
+        // Busca um endereco especifico do usuario logado.
         [HttpGet("{enderecoId:int}")]
         public async Task<IActionResult> Obter(int usuarioId, int enderecoId)
         {
-            if (usuarioId != GetUserId())
+            if (usuarioId != User.GetUserId())
                 return Forbid();
 
             var endereco = await _context.TBL_ENDERECO
@@ -82,35 +73,35 @@ namespace Omnimarket.Api.Controllers
             return endereco is null ? NotFound() : Ok(endereco);
         }
 
-        // ➕ CRIAR
+        // Cria um novo endereco para o usuario autenticado.
         [HttpPost]
-        public async Task<IActionResult> Criar( [FromBody] UsuarioEnderecoDto dto)
+        public async Task<IActionResult> Criar(int usuarioId, [FromBody] UsuarioEnderecoDto dto)
         {
-            var usuarioId = int.Parse(User.FindFirst("id")!.Value);
+            var usuarioIdLogado = User.GetUserId();
 
-            if (usuarioId != GetUserId())
+            if (usuarioId != usuarioIdLogado)
                 return Forbid();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var usuarioExiste = await _context.TBL_USUARIO.AnyAsync(u => u.Id == usuarioId);
+            var usuarioExiste = await _context.TBL_USUARIO.AnyAsync(u => u.Id == usuarioIdLogado);
             if (!usuarioExiste)
-                return NotFound(new { mensagem = "Usuário não encontrado." });
+                return NotFound(new { mensagem = "Usuario nao encontrado." });
 
-            // ⭐ Garantir apenas 1 principal
+            // Se o novo endereco for principal, remove a marcacao dos anteriores.
             if (dto.IsPrincipal == true)
             {
                 var enderecos = _context.TBL_ENDERECO
-                    .Where(e => e.UsuarioId == usuarioId);
+                    .Where(e => e.UsuarioId == usuarioIdLogado);
 
-                foreach (var e in enderecos)
-                    e.IsPrincipal = false;
+                foreach (var enderecoExistente in enderecos)
+                    enderecoExistente.IsPrincipal = false;
             }
 
             var endereco = new Endereco
             {
-                UsuarioId = usuarioId,
+                UsuarioId = usuarioIdLogado,
                 Cep = dto.Cep.Replace("-", "").Trim(),
                 TipoLogradouro = dto.TipoLogradouro,
                 NomeEndereco = dto.NomeEndereco.Trim(),
@@ -125,11 +116,11 @@ namespace Omnimarket.Api.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(Obter),
-                new { usuarioId, enderecoId = endereco.Id },
+                new { usuarioId = usuarioIdLogado, enderecoId = endereco.Id },
                 new { endereco.Id });
         }
 
-        // 📚 ENUM TIPOS LOGRADOURO
+        // Lista os valores possiveis do enum de tipos de logradouro para o front-end.
         [HttpGet("tipos-logradouro")]
         public IActionResult GetTiposLogradouro()
         {

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Omnimarket.Api.Data;
@@ -8,6 +9,7 @@ using Omnimarket.Api.Utils;
 namespace Omnimarket.Api.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/telefones")]
     public class TelefonesController : ControllerBase
     {
@@ -18,7 +20,7 @@ namespace Omnimarket.Api.Controllers
             _context = context;
         }
 
-        // 📄 LISTAR
+        // Lista os telefones vinculados ao usuario logado.
         [HttpGet]
         public async Task<IActionResult> Listar()
         {
@@ -37,7 +39,7 @@ namespace Omnimarket.Api.Controllers
             return Ok(telefones);
         }
 
-        // 🔍 OBTER
+        // Busca um telefone especifico pertencente ao usuario autenticado.
         [HttpGet("{telefoneId:int}")]
         public async Task<IActionResult> Obter(int telefoneId)
         {
@@ -54,11 +56,11 @@ namespace Omnimarket.Api.Controllers
                 .FirstOrDefaultAsync();
 
             return telefone is null
-                ? NotFound(new { mensagem = "Telefone não encontrado." })
+                ? NotFound(new { mensagem = "Telefone nao encontrado." })
                 : Ok(telefone);
         }
 
-        // ➕ CRIAR
+        // Cria um novo telefone validando o formato brasileiro antes de salvar.
         [HttpPost]
         public async Task<IActionResult> Criar([FromBody] UsuarioTelefoneDto dto)
         {
@@ -67,14 +69,14 @@ namespace Omnimarket.Api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var r = ValidadorTelefone.ValidarCelularBr(dto.Ddd, dto.Numero);
-            if (!r.Valido)
-                return BadRequest(new { mensagem = "Telefone inválido." });
+            var resultado = ValidadorTelefone.ValidarCelularBr(dto.Ddd, dto.Numero);
+            if (!resultado.Valido)
+                return BadRequest(new { mensagem = "Telefone invalido." });
 
             var telefone = new Telefone
             {
                 UsuarioId = usuarioId,
-                NumeroE164 = r.E164!,
+                NumeroE164 = resultado.E164!,
                 IsPrincipal = dto.IsPrincipal ?? false
             };
 
@@ -84,7 +86,7 @@ namespace Omnimarket.Api.Controllers
             return Ok(new { mensagem = "Telefone cadastrado com sucesso." });
         }
 
-        // 🔄 ATUALIZAR
+        // Atualiza o telefone e opcionalmente redefine qual e o principal.
         [HttpPut("{telefoneId:int}")]
         public async Task<IActionResult> Atualizar(int telefoneId, [FromBody] UsuarioTelefoneDto dto)
         {
@@ -97,23 +99,22 @@ namespace Omnimarket.Api.Controllers
                 .FirstOrDefaultAsync(t => t.UsuarioId == usuarioId && t.Id == telefoneId);
 
             if (telefone is null)
-                return NotFound(new { mensagem = "Telefone não encontrado." });
+                return NotFound(new { mensagem = "Telefone nao encontrado." });
 
-            var r = ValidadorTelefone.ValidarCelularBr(dto.Ddd, dto.Numero);
-            if (!r.Valido)
-                return BadRequest(new { mensagem = "Telefone inválido." });
+            var resultado = ValidadorTelefone.ValidarCelularBr(dto.Ddd, dto.Numero);
+            if (!resultado.Valido)
+                return BadRequest(new { mensagem = "Telefone invalido." });
 
-            telefone.NumeroE164 = r.E164!;
+            telefone.NumeroE164 = resultado.E164!;
 
-            // ⭐ Apenas 1 principal
             if (dto.IsPrincipal == true)
             {
                 var telefones = await _context.TBL_TELEFONE
                     .Where(t => t.UsuarioId == usuarioId)
                     .ToListAsync();
 
-                foreach (var t in telefones)
-                    t.IsPrincipal = false;
+                foreach (var telefoneExistente in telefones)
+                    telefoneExistente.IsPrincipal = false;
 
                 telefone.IsPrincipal = true;
             }
@@ -123,7 +124,7 @@ namespace Omnimarket.Api.Controllers
             return Ok(new { mensagem = "Telefone atualizado com sucesso." });
         }
 
-        // ❌ REMOVER
+        // Remove um telefone preservando pelo menos um telefone cadastrado.
         [HttpDelete("{telefoneId:int}")]
         public async Task<IActionResult> Remover(int telefoneId)
         {
@@ -133,14 +134,14 @@ namespace Omnimarket.Api.Controllers
                 .FirstOrDefaultAsync(t => t.UsuarioId == usuarioId && t.Id == telefoneId);
 
             if (telefone is null)
-                return NotFound(new { mensagem = "Telefone não encontrado." });
+                return NotFound(new { mensagem = "Telefone nao encontrado." });
 
             var telefones = await _context.TBL_TELEFONE
                 .Where(t => t.UsuarioId == usuarioId)
                 .ToListAsync();
 
             if (telefones.Count <= 1)
-                return BadRequest(new { mensagem = "Não pode remover o último telefone." });
+                return BadRequest(new { mensagem = "Nao pode remover o ultimo telefone." });
 
             if (telefone.IsPrincipal)
             {

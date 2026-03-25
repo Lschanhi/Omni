@@ -15,10 +15,11 @@ namespace Omnimarket.Api.Services
             _configuration = configuration;
         }
 
+        // Gera o JWT que identifica o usuario autenticado nas proximas requisicoes.
         public string GerarToken(Usuario usuario)
         {
             var key = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(_configuration["Jwt:Key"])
+                Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!)
             );
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -35,7 +36,7 @@ namespace Omnimarket.Api.Services
                 audience: _configuration["Jwt:Audience"],
                 claims: claims,
                 expires: DateTime.UtcNow.AddMinutes(
-                    double.Parse(_configuration["Jwt:ExpireMinutes"])
+                    double.Parse(_configuration["Jwt:ExpireMinutes"]!)
                 ),
                 signingCredentials: creds
             );

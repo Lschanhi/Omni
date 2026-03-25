@@ -1,15 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Omni.Models.Dtos.Produtos;
-using Omnimarket.Api.Controllers;
 using Omnimarket.Api.Data;
 using Omnimarket.Api.Models.Dtos.Produtos;
 using Omnimarket.Api.Models.Entidades;
+using Omnimarket.Api.Services.Interfaces;
 
-namespace Omni.Services
+namespace Omnimarket.Api.Services
 {
     public class ProdutoService : IProdutoService
     {
@@ -20,33 +15,31 @@ namespace Omni.Services
             _context = context;
         }
 
-        // 🔹 GET ALL
+        // Converte todas as entidades para DTOs de leitura antes de devolver ao controller.
         public async Task<IEnumerable<ProdutoLeituraDto>> GetAllAsync()
         {
             var produtos = await _context.TBL_PRODUTO.ToListAsync();
-
-            return produtos.Select<Produto, ProdutoLeituraDto>(MapToDto);
+            return produtos.Select(MapToDto);
         }
 
-        // 🔹 GET BY ID
+        // Busca um produto por id e retorna null quando ele nao existe.
         public async Task<ProdutoLeituraDto?> GetByIdAsync(int id)
         {
             var produto = await _context.TBL_PRODUTO.FindAsync(id);
-
             return produto == null ? null : MapToDto(produto);
         }
 
-        // 🔹 CREATE
+        // Cria um novo produto e o associa ao usuario autenticado.
         public async Task<ProdutoLeituraDto> CreateAsync(ProdutoCriacaoDto dto, int usuarioId)
         {
             if (await _context.TBL_PRODUTO.AnyAsync(p => p.Nome == dto.Nome))
-                throw new Exception("Já existe um produto com esse nome.");
+                throw new Exception("Ja existe um produto com esse nome.");
 
             var produto = new Produto
             {
                 Nome = dto.Nome.Trim(),
                 Preco = dto.Preco,
-                Estoque = dto.Estoque, // ajuste se renomear
+                Estoque = dto.Estoque,
                 Descricao = dto.Descricao,
                 UsuarioId = usuarioId,
                 DtCriacao = DateTimeOffset.UtcNow
@@ -58,20 +51,23 @@ namespace Omni.Services
             return MapToDto(produto);
         }
 
-        // 🔹 UPDATE
-        public async Task<bool> UpdateAsync(int id, ProdutoAtualizarDto dto)
+        // Atualiza somente produtos do proprio usuario para evitar edicao indevida.
+        public async Task<bool> UpdateAsync(int id, ProdutoAtualizarDto dto, int usuarioId)
         {
             var produto = await _context.TBL_PRODUTO.FindAsync(id);
 
             if (produto == null)
                 return false;
 
+            if (produto.UsuarioId != usuarioId)
+                throw new UnauthorizedAccessException("Voce nao pode editar este produto.");
+
             if (await _context.TBL_PRODUTO.AnyAsync(p => p.Nome == dto.Nome && p.Id != id))
-                throw new Exception("Já existe outro produto com esse nome.");
+                throw new Exception("Ja existe outro produto com esse nome.");
 
             produto.Nome = dto.Nome.Trim();
             produto.Preco = dto.Preco;
-            produto.Estoque = dto.Estoque; // ajuste se renomear
+            produto.Estoque = dto.Estoque;
             produto.Descricao = dto.Descricao;
             produto.DtAtualizacao = DateTimeOffset.UtcNow;
 
@@ -80,13 +76,16 @@ namespace Omni.Services
             return true;
         }
 
-        // 🔹 DELETE
-        public async Task<bool> DeleteAsync(int id)
+        // Exclui um produto apenas quando o usuario autenticado e o dono do registro.
+        public async Task<bool> DeleteAsync(int id, int usuarioId)
         {
             var produto = await _context.TBL_PRODUTO.FindAsync(id);
 
             if (produto == null)
                 return false;
+
+            if (produto.UsuarioId != usuarioId)
+                throw new UnauthorizedAccessException("Voce nao pode excluir este produto.");
 
             _context.TBL_PRODUTO.Remove(produto);
             await _context.SaveChangesAsync();
@@ -94,25 +93,21 @@ namespace Omni.Services
             return true;
         }
 
-        // 🔥 PAGINAÇÃO + FILTRO + BUSCA
+        // Monta uma consulta dinamica com filtros e pagina os resultados.
         public async Task<PageResult<ProdutoLeituraDto>> GetPagedAsync(ProdutoFiltroDto filtro)
         {
             var query = _context.TBL_PRODUTO.AsQueryable();
 
-            // 🔎 Busca por nome
             if (!string.IsNullOrWhiteSpace(filtro.Nome))
             {
-                query = query.Where(p =>
-                    EF.Functions.Like(p.Nome, $"%{filtro.Nome}%"));
+                query = query.Where(p => EF.Functions.Like(p.Nome, $"%{filtro.Nome}%"));
             }
 
-            // 💰 Filtro preço mínimo
             if (filtro.MinPreco.HasValue)
             {
                 query = query.Where(p => p.Preco >= filtro.MinPreco.Value);
             }
 
-            // 💰 Filtro preço máximo
             if (filtro.MaxPreco.HasValue)
             {
                 query = query.Where(p => p.Preco <= filtro.MaxPreco.Value);
@@ -126,30 +121,30 @@ namespace Omni.Services
                 .Take(filtro.PageSize)
                 .ToListAsync();
 
-            var items = produtos.Select(MapToDto);
-
             return new PageResult<ProdutoLeituraDto>
             {
-                Items = items,
+                Items = produtos.Select(MapToDto),
                 Total = total,
                 Page = filtro.Page,
                 PageSize = filtro.PageSize
             };
         }
 
-        // 🔧 MÉTODO PRIVADO (REMOVE REPETIÇÃO)
-        private static ProdutoLeituraDto MapToDto(Produto p)
+        // Mantem a transformacao entidade -> DTO em um unico lugar para evitar repeticao.
+        private static ProdutoLeituraDto MapToDto(Produto produto)
         {
             return new ProdutoLeituraDto
             {
-                Id = p.Id,
-                Nome = p.Nome,
-                Preco = p.Preco,
-                Estoque = p.Estoque,
-                Disponivel = p.Disponivel,
-                Descricao = p.Descricao,
-                MediaAvaliacao = p.MediaAvaliacao,
-                DtCriacao = p.DtCriacao
+                Id = produto.Id,
+                Nome = produto.Nome,
+                Preco = produto.Preco,
+                Estoque = produto.Estoque,
+                Disponivel = produto.Disponivel,
+                Descricao = produto.Descricao,
+                MediaAvaliacao = produto.MediaAvaliacao,
+                TotalAvaliacoes = produto.TotalAvaliacoes,
+                DtCriacao = produto.DtCriacao,
+                DtAtualizacao = produto.DtAtualizacao
             };
         }
     }
