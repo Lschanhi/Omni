@@ -1,0 +1,34 @@
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Shared\bin\Debug\net9.0\OmniMarket.Shared.deps.json
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Shared\bin\Debug\net9.0\OmniMarket.Shared.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Shared\bin\Debug\net9.0\OmniMarket.Shared.pdb
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Shared\obj\Debug\net9.0\OmniMarket.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Shared\obj\Debug\net9.0\OmniMarket.Shared.AssemblyInfoInputs.cache
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Shared\obj\Debug\net9.0\OmniMarket.Shared.AssemblyInfo.cs
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Shared\obj\Debug\net9.0\OmniMarket.Shared.csproj.CoreCompileInputs.cache
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Shared\obj\Debug\net9.0\OmniMarket.Shared.sourcelink.json
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Shared\obj\Debug\net9.0\OmniMarket.Shared.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Shared\obj\Debug\net9.0\refint\OmniMarket.Shared.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Shared\obj\Debug\net9.0\OmniMarket.Shared.pdb
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Shared\obj\Debug\net9.0\ref\OmniMarket.Shared.dll
+C:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\OmniMarket.Shared\bin\Debug\net9.0\OmniMarket.Shared.deps.json
+C:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\OmniMarket.Shared\bin\Debug\net9.0\OmniMarket.Shared.dll
+C:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\OmniMarket.Shared\bin\Debug\net9.0\OmniMarket.Shared.pdb
+C:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\OmniMarket.Shared\obj\Debug\net9.0\OmniMarket.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\OmniMarket.Shared\obj\Debug\net9.0\OmniMarket.Shared.AssemblyInfoInputs.cache
+C:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\OmniMarket.Shared\obj\Debug\net9.0\OmniMarket.Shared.AssemblyInfo.cs
+C:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\OmniMarket.Shared\obj\Debug\net9.0\OmniMarket.Shared.csproj.CoreCompileInputs.cache
+C:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\OmniMarket.Shared\obj\Debug\net9.0\OmniMarket.Shared.dll
+C:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\OmniMarket.Shared\obj\Debug\net9.0\refint\OmniMarket.Shared.dll
+C:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\OmniMarket.Shared\obj\Debug\net9.0\OmniMarket.Shared.pdb
+C:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\OmniMarket.Shared\obj\Debug\net9.0\ref\OmniMarket.Shared.dll
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\f0eb8dba53e95d12\OmniMarket.Shared\bin\Debug\net9.0\OmniMarket.Shared.deps.json
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\f0eb8dba53e95d12\OmniMarket.Shared\bin\Debug\net9.0\OmniMarket.Shared.dll
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\f0eb8dba53e95d12\OmniMarket.Shared\bin\Debug\net9.0\OmniMarket.Shared.pdb
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\f0eb8dba53e95d12\OmniMarket.Shared\obj\Debug\net9.0\OmniMarket.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\f0eb8dba53e95d12\OmniMarket.Shared\obj\Debug\net9.0\OmniMarket.Shared.AssemblyInfoInputs.cache
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\f0eb8dba53e95d12\OmniMarket.Shared\obj\Debug\net9.0\OmniMarket.Shared.AssemblyInfo.cs
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\f0eb8dba53e95d12\OmniMarket.Shared\obj\Debug\net9.0\OmniMarket.Shared.csproj.CoreCompileInputs.cache
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\f0eb8dba53e95d12\OmniMarket.Shared\obj\Debug\net9.0\OmniMarket.Shared.dll
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\f0eb8dba53e95d12\OmniMarket.Shared\obj\Debug\net9.0\refint\OmniMarket.Shared.dll
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\f0eb8dba53e95d12\OmniMarket.Shared\obj\Debug\net9.0\OmniMarket.Shared.pdb
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\f0eb8dba53e95d12\OmniMarket.Shared\obj\Debug\net9.0\ref\OmniMarket.Shared.dll

@@ -1,0 +1,1158 @@
+﻿{
+    "info":  {
+                 "_postman_id":  "5f2b2c2b-9047-4ef8-8c19-2d3057b98c20",
+                 "name":  "OmniMarket API - Fluxo Completo",
+                 "schema":  "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+                 "description":  "Colecao para testar o fluxo principal da API OmniMarket. A conta principal pode atuar como compradora e vendedora; a conta secundaria existe apenas para simular a compra de um produto de outro usuario, ja que a API bloqueia a compra do proprio item. Ordem sugerida: conta principal, conta secundaria, fluxo de venda com dois produtos e fluxo de compra adicionando os dois itens ao carrinho."
+             },
+    "variable":  [
+                     {
+                         "key":  "baseUrl",
+                         "value":  "http://localhost:5033"
+                     },
+                     {
+                         "key":  "vendedorCpf",
+                         "value":  ""
+                     },
+                     {
+                         "key":  "vendedorEmail",
+                         "value":  ""
+                     },
+                     {
+                         "key":  "vendedorPassword",
+                         "value":  "Teste@123"
+                     },
+                     {
+                         "key":  "vendedorToken",
+                         "value":  ""
+                     },
+                     {
+                         "key":  "vendedorUserId",
+                         "value":  ""
+                     },
+                     {
+                         "key":  "compradorCpf",
+                         "value":  ""
+                     },
+                     {
+                         "key":  "compradorEmail",
+                         "value":  ""
+                     },
+                     {
+                         "key":  "compradorPassword",
+                         "value":  "Teste@123"
+                     },
+                     {
+                         "key":  "compradorToken",
+                         "value":  ""
+                     },
+                     {
+                         "key":  "compradorUserId",
+                         "value":  ""
+                     },
+                     {
+                         "key":  "compradorEnderecoId",
+                         "value":  ""
+                     },
+                     {
+                         "key":  "produtoId",
+                         "value":  ""
+                     },
+                     {
+                         "key":  "produtoId2",
+                         "value":  ""
+                     },
+                     {
+                         "key":  "pedidoId",
+                         "value":  ""
+                     },
+                     {
+                         "key":  "midiaId",
+                         "value":  ""
+                     }
+                 ],
+    "item":  [
+                 {
+                     "name":  "01 - Conta Principal",
+                     "item":  [
+                                  {
+                                      "name":  "Registrar Conta Principal",
+                                      "event":  [
+                                                    {
+                                                        "listen":  "prerequest",
+                                                        "script":  {
+                                                                       "type":  "text/javascript",
+                                                                       "exec":  [
+                                                                                    "function gerarCpf() {",
+                                                                                    "    const nums = [];",
+                                                                                    "    for (let i = 0; i \u003c 9; i++) nums.push(Math.floor(Math.random() * 10));",
+                                                                                    "    if (nums.every(n =\u003e n === nums[0])) nums[8] = (nums[8] + 1) % 10;",
+                                                                                    "    const digito = (base, fatorInicial) =\u003e {",
+                                                                                    "        let total = 0;",
+                                                                                    "        for (const n of base) total += n * fatorInicial--;",
+                                                                                    "        const resto = total % 11;",
+                                                                                    "        return resto \u003c 2 ? 0 : 11 - resto;",
+                                                                                    "    };",
+                                                                                    "    const d1 = digito(nums, 10);",
+                                                                                    "    const d2 = digito([...nums, d1], 11);",
+                                                                                    "    return [...nums, d1, d2].join(\u0027\u0027);",
+                                                                                    "}",
+                                                                                    "",
+                                                                                    "const suffix = Date.now();",
+                                                                                    "pm.collectionVariables.set(\u0027vendedorCpf\u0027, gerarCpf());",
+                                                                                    "pm.collectionVariables.set(\u0027vendedorEmail\u0027, `vendedor.${suffix}@omnimarket.test`);",
+                                                                                    "pm.collectionVariables.set(\u0027vendedorPassword\u0027, \u0027Teste@123\u0027);"
+                                                                                ]
+                                                                   }
+                                                    },
+                                                    {
+                                                        "listen":  "test",
+                                                        "script":  {
+                                                                       "type":  "text/javascript",
+                                                                       "exec":  [
+                                                                                    "pm.test(\u0027Cadastro do vendedor realizado\u0027, function () {",
+                                                                                    "    pm.response.to.have.status(200);",
+                                                                                    "});"
+                                                                                ]
+                                                                   }
+                                                    }
+                                                ],
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"Cpf\": \"{{vendedorCpf}}\",\n  \"Nome\": \"Vendedor\",\n  \"Sobrenome\": \"Teste\",\n  \"Email\": \"{{vendedorEmail}}\",\n  \"Password\": \"{{vendedorPassword}}\",\n  \"ConfirmPassword\": \"{{vendedorPassword}}\",\n  \"AceitouTermos\": true,\n  \"Telefones\": [\n    {\n      \"Ddd\": \"11\",\n      \"Numero\": \"999999999\",\n      \"Tipo\": \"Celular\",\n      \"IsPrincipal\": true\n    }\n  ],\n  \"Enderecos\": [\n    {\n      \"Cep\": \"01001000\",\n      \"TipoLogradouro\": \"Rua\",\n      \"NomeEndereco\": \"Praca da Se\",\n      \"Numero\": \"100\",\n      \"Complemento\": \"Loja 1\",\n      \"Cidade\": \"Sao Paulo\",\n      \"Uf\": \"SP\",\n      \"IsPrincipal\": true\n    }\n  ]\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               },
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/usuario/registrar",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "usuario",
+                                                                               "registrar"
+                                                                           ]
+                                                              },
+                                                      "description":  "Cria a conta principal da colecao. Essa mesma conta pode vender e comprar na API."
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Login Conta Principal",
+                                      "event":  [
+                                                    {
+                                                        "listen":  "test",
+                                                        "script":  {
+                                                                       "type":  "text/javascript",
+                                                                       "exec":  [
+                                                                                    "pm.test(\u0027Login do vendedor realizado\u0027, function () {",
+                                                                                    "    pm.response.to.have.status(200);",
+                                                                                    "});",
+                                                                                    "",
+                                                                                    "const data = pm.response.json();",
+                                                                                    "pm.collectionVariables.set(\u0027vendedorToken\u0027, data.token || data.Token || \u0027\u0027);"
+                                                                                ]
+                                                                   }
+                                                    }
+                                                ],
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"Email\": \"{{vendedorEmail}}\",\n  \"Password\": \"{{vendedorPassword}}\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               },
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/auth/login",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "auth",
+                                                                               "login"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Perfil Conta Principal",
+                                      "event":  [
+                                                    {
+                                                        "listen":  "test",
+                                                        "script":  {
+                                                                       "type":  "text/javascript",
+                                                                       "exec":  [
+                                                                                    "pm.test(\u0027Perfil do vendedor carregado\u0027, function () {",
+                                                                                    "    pm.response.to.have.status(200);",
+                                                                                    "});",
+                                                                                    "",
+                                                                                    "const data = pm.response.json();",
+                                                                                    "pm.collectionVariables.set(\u0027vendedorUserId\u0027, data.Id || data.id || \u0027\u0027);"
+                                                                                ]
+                                                                   }
+                                                    }
+                                                ],
+                                      "request":  {
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{vendedorToken}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/usuario/me",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "usuario",
+                                                                               "me"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  }
+                              ]
+                 },
+                 {
+                     "name":  "02 - Conta Secundaria",
+                     "item":  [
+                                  {
+                                      "name":  "Registrar Conta Secundaria",
+                                      "event":  [
+                                                    {
+                                                        "listen":  "prerequest",
+                                                        "script":  {
+                                                                       "type":  "text/javascript",
+                                                                       "exec":  [
+                                                                                    "function gerarCpf() {",
+                                                                                    "    const nums = [];",
+                                                                                    "    for (let i = 0; i \u003c 9; i++) nums.push(Math.floor(Math.random() * 10));",
+                                                                                    "    if (nums.every(n =\u003e n === nums[0])) nums[8] = (nums[8] + 1) % 10;",
+                                                                                    "    const digito = (base, fatorInicial) =\u003e {",
+                                                                                    "        let total = 0;",
+                                                                                    "        for (const n of base) total += n * fatorInicial--;",
+                                                                                    "        const resto = total % 11;",
+                                                                                    "        return resto \u003c 2 ? 0 : 11 - resto;",
+                                                                                    "    };",
+                                                                                    "    const d1 = digito(nums, 10);",
+                                                                                    "    const d2 = digito([...nums, d1], 11);",
+                                                                                    "    return [...nums, d1, d2].join(\u0027\u0027);",
+                                                                                    "}",
+                                                                                    "",
+                                                                                    "const suffix = Date.now();",
+                                                                                    "pm.collectionVariables.set(\u0027compradorCpf\u0027, gerarCpf());",
+                                                                                    "pm.collectionVariables.set(\u0027compradorEmail\u0027, `comprador.${suffix}@omnimarket.test`);",
+                                                                                    "pm.collectionVariables.set(\u0027compradorPassword\u0027, \u0027Teste@123\u0027);"
+                                                                                ]
+                                                                   }
+                                                    },
+                                                    {
+                                                        "listen":  "test",
+                                                        "script":  {
+                                                                       "type":  "text/javascript",
+                                                                       "exec":  [
+                                                                                    "pm.test(\u0027Cadastro do comprador realizado\u0027, function () {",
+                                                                                    "    pm.response.to.have.status(200);",
+                                                                                    "});"
+                                                                                ]
+                                                                   }
+                                                    }
+                                                ],
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"Cpf\": \"{{compradorCpf}}\",\n  \"Nome\": \"Comprador\",\n  \"Sobrenome\": \"Teste\",\n  \"Email\": \"{{compradorEmail}}\",\n  \"Password\": \"{{compradorPassword}}\",\n  \"ConfirmPassword\": \"{{compradorPassword}}\",\n  \"AceitouTermos\": true,\n  \"Telefones\": [\n    {\n      \"Ddd\": \"11\",\n      \"Numero\": \"988888888\",\n      \"Tipo\": \"Celular\",\n      \"IsPrincipal\": true\n    }\n  ],\n  \"Enderecos\": [\n    {\n      \"Cep\": \"01310930\",\n      \"TipoLogradouro\": \"Avenida\",\n      \"NomeEndereco\": \"Avenida Paulista\",\n      \"Numero\": \"1500\",\n      \"Complemento\": \"Apto 10\",\n      \"Cidade\": \"Sao Paulo\",\n      \"Uf\": \"SP\",\n      \"IsPrincipal\": true\n    }\n  ]\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               },
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/usuario/registrar",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "usuario",
+                                                                               "registrar"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Login Conta Secundaria",
+                                      "event":  [
+                                                    {
+                                                        "listen":  "test",
+                                                        "script":  {
+                                                                       "type":  "text/javascript",
+                                                                       "exec":  [
+                                                                                    "pm.test(\u0027Login do comprador realizado\u0027, function () {",
+                                                                                    "    pm.response.to.have.status(200);",
+                                                                                    "});",
+                                                                                    "",
+                                                                                    "const data = pm.response.json();",
+                                                                                    "pm.collectionVariables.set(\u0027compradorToken\u0027, data.token || data.Token || \u0027\u0027);"
+                                                                                ]
+                                                                   }
+                                                    }
+                                                ],
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"Email\": \"{{compradorEmail}}\",\n  \"Password\": \"{{compradorPassword}}\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               },
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/auth/login",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "auth",
+                                                                               "login"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Perfil Conta Secundaria",
+                                      "event":  [
+                                                    {
+                                                        "listen":  "test",
+                                                        "script":  {
+                                                                       "type":  "text/javascript",
+                                                                       "exec":  [
+                                                                                    "pm.test(\u0027Perfil do comprador carregado\u0027, function () {",
+                                                                                    "    pm.response.to.have.status(200);",
+                                                                                    "});",
+                                                                                    "",
+                                                                                    "const data = pm.response.json();",
+                                                                                    "pm.collectionVariables.set(\u0027compradorUserId\u0027, data.Id || data.id || \u0027\u0027);",
+                                                                                    "const enderecos = data.Enderecos || data.enderecos || [];",
+                                                                                    "if (enderecos.length \u003e 0) {",
+                                                                                    "    pm.collectionVariables.set(\u0027compradorEnderecoId\u0027, enderecos[0].Id || enderecos[0].id || \u0027\u0027);",
+                                                                                    "}"
+                                                                                ]
+                                                                   }
+                                                    }
+                                                ],
+                                      "request":  {
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{compradorToken}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/usuario/me",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "usuario",
+                                                                               "me"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Listar Enderecos da Conta Secundaria",
+                                      "event":  [
+                                                    {
+                                                        "listen":  "test",
+                                                        "script":  {
+                                                                       "type":  "text/javascript",
+                                                                       "exec":  [
+                                                                                    "const data = pm.response.json();",
+                                                                                    "if (Array.isArray(data) \u0026\u0026 data.length \u003e 0) {",
+                                                                                    "    pm.collectionVariables.set(\u0027compradorEnderecoId\u0027, data[0].Id || data[0].id || \u0027\u0027);",
+                                                                                    "}"
+                                                                                ]
+                                                                   }
+                                                    }
+                                                ],
+                                      "request":  {
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{compradorToken}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/usuarios/{{compradorUserId}}/enderecos",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "usuarios",
+                                                                               "{{compradorUserId}}",
+                                                                               "enderecos"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Listar Telefones da Conta Secundaria",
+                                      "request":  {
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{compradorToken}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/telefones",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "telefones"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  }
+                              ]
+                 },
+                 {
+                     "name":  "03 - Fluxo de Venda",
+                     "item":  [
+                                  {
+                                      "name":  "Criar Produto 1",
+                                      "event":  [
+                                                    {
+                                                        "listen":  "test",
+                                                        "script":  {
+                                                                       "type":  "text/javascript",
+                                                                       "exec":  [
+                                                                                    "pm.test(\u0027Produto criado\u0027, function () {",
+                                                                                    "    pm.expect([200, 201]).to.include(pm.response.code);",
+                                                                                    "});",
+                                                                                    "",
+                                                                                    "const data = pm.response.json();",
+                                                                                    "pm.collectionVariables.set(\u0027produtoId\u0027, data.Id || data.id || \u0027\u0027);"
+                                                                                ]
+                                                                   }
+                                                    }
+                                                ],
+                                      "request":  {
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{vendedorToken}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"Nome\": \"Notebook Gamer Teste 1\",\n  \"Categoria\": \"Eletronicos\",\n  \"Sku\": \"SKU-1-{{$timestamp}}\",\n  \"Preco\": 4599.90,\n  \"Descricao\": \"Produto 1 criado pela colecao do Postman.\",\n  \"Estoque\": 5,\n  \"StatusPublicacao\": \"Publicado\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               },
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/produto",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "produto"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Buscar Produto 1",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/produto/{{produtoId}}",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "produto",
+                                                                               "{{produtoId}}"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Criar Produto 2",
+                                      "event":  [
+                                                    {
+                                                        "listen":  "test",
+                                                        "script":  {
+                                                                       "type":  "text/javascript",
+                                                                       "exec":  [
+                                                                                    "pm.test(\u0027Produto 2 criado\u0027, function () {",
+                                                                                    "    pm.expect([200, 201]).to.include(pm.response.code);",
+                                                                                    "});",
+                                                                                    "",
+                                                                                    "const data = pm.response.json();",
+                                                                                    "pm.collectionVariables.set(\u0027produtoId2\u0027, data.Id || data.id || \u0027\u0027);"
+                                                                                ]
+                                                                   }
+                                                    }
+                                                ],
+                                      "request":  {
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{vendedorToken}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"Nome\": \"Mouse Gamer Teste 2\",\n  \"Categoria\": \"Perifericos\",\n  \"Sku\": \"SKU-2-{{$timestamp}}\",\n  \"Preco\": 199.90,\n  \"Descricao\": \"Produto 2 criado pela colecao do Postman.\",\n  \"Estoque\": 8,\n  \"StatusPublicacao\": \"Publicado\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               },
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/produto",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "produto"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Buscar Produto 2",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/produto/{{produtoId2}}",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "produto",
+                                                                               "{{produtoId2}}"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Listar Midias do Produto 1",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/produtos/{{produtoId}}/midias",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "produtos",
+                                                                               "{{produtoId}}",
+                                                                               "midias"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Upload de Midia do Produto 1",
+                                      "event":  [
+                                                    {
+                                                        "listen":  "test",
+                                                        "script":  {
+                                                                       "type":  "text/javascript",
+                                                                       "exec":  [
+                                                                                    "if (pm.response.code === 200) {",
+                                                                                    "    const data = pm.response.json();",
+                                                                                    "    if (Array.isArray(data) \u0026\u0026 data.length \u003e 0) {",
+                                                                                    "        pm.collectionVariables.set(\u0027midiaId\u0027, data[0].Id || data[0].id || \u0027\u0027);",
+                                                                                    "    }",
+                                                                                    "}"
+                                                                                ]
+                                                                   }
+                                                    }
+                                                ],
+                                      "request":  {
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{vendedorToken}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "method":  "POST",
+                                                      "body":  {
+                                                                   "mode":  "formdata",
+                                                                   "formdata":  [
+                                                                                    {
+                                                                                        "key":  "arquivos",
+                                                                                        "type":  "file",
+                                                                                        "src":  ""
+                                                                                    }
+                                                                                ]
+                                                               },
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/produtos/{{produtoId}}/midias",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "produtos",
+                                                                               "{{produtoId}}",
+                                                                               "midias"
+                                                                           ]
+                                                              },
+                                                      "description":  "Selecione um arquivo manualmente no Postman antes de enviar."
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  }
+                              ]
+                 },
+                 {
+                     "name":  "04 - Fluxo de Compra",
+                     "item":  [
+                                  {
+                                      "name":  "Listar Produtos",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/produto",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "produto"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Filtrar Produtos",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/produto/filtro?Categoria=Eletronicos\u0026SomenteDisponiveis=true\u0026Page=1\u0026PageSize=10",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "produto",
+                                                                               "filtro"
+                                                                           ],
+                                                                  "query":  [
+                                                                                {
+                                                                                    "key":  "Categoria",
+                                                                                    "value":  "Eletronicos"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "SomenteDisponiveis",
+                                                                                    "value":  "true"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "Page",
+                                                                                    "value":  "1"
+                                                                                },
+                                                                                {
+                                                                                    "key":  "PageSize",
+                                                                                    "value":  "10"
+                                                                                }
+                                                                            ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Adicionar Produto 1 ao Carrinho da Conta Secundaria",
+                                      "request":  {
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{compradorToken}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"ProdutoId\": {{produtoId}},\n  \"Quantidade\": 2\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               },
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/carrinho",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "carrinho"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Adicionar Produto 2 ao Carrinho da Conta Secundaria",
+                                      "request":  {
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{compradorToken}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"ProdutoId\": {{produtoId2}},\n  \"Quantidade\": 1\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               },
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/carrinho",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "carrinho"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Obter Carrinho da Conta Secundaria",
+                                      "request":  {
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{compradorToken}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/carrinho",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "carrinho"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Atualizar Quantidade do Produto 2 no Carrinho da Conta Secundaria",
+                                      "request":  {
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{compradorToken}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "method":  "PUT",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"Quantidade\": 2\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               },
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/carrinho/{{produtoId2}}",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "carrinho",
+                                                                               "{{produtoId2}}"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Criar Pedido com Conta Secundaria",
+                                      "event":  [
+                                                    {
+                                                        "listen":  "test",
+                                                        "script":  {
+                                                                       "type":  "text/javascript",
+                                                                       "exec":  [
+                                                                                    "pm.test(\u0027Pedido criado\u0027, function () {",
+                                                                                    "    pm.response.to.have.status(200);",
+                                                                                    "});",
+                                                                                    "",
+                                                                                    "const data = pm.response.json();",
+                                                                                    "pm.collectionVariables.set(\u0027pedidoId\u0027, data.pedidoId || data.PedidoId || \u0027\u0027);"
+                                                                                ]
+                                                                   }
+                                                    }
+                                                ],
+                                      "request":  {
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{compradorToken}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ],
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\n  \"EnderecoId\": {{compradorEnderecoId}},\n  \"TipoEntregaId\": 1,\n  \"Observacao\": \"Pedido criado a partir dos itens do carrinho.\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               },
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/pedidos",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "pedidos"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Buscar Pedido da Conta Secundaria",
+                                      "request":  {
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{compradorToken}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/pedidos/{{pedidoId}}",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "pedidos",
+                                                                               "{{pedidoId}}"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Listar Pedidos da Conta Secundaria",
+                                      "request":  {
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{compradorToken}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/pedidos/usuario/{{compradorUserId}}",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "pedidos",
+                                                                               "usuario",
+                                                                               "{{compradorUserId}}"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Cancelar Pedido da Conta Secundaria",
+                                      "request":  {
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{compradorToken}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "method":  "PUT",
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/pedidos/{{pedidoId}}/cancelar",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "pedidos",
+                                                                               "{{pedidoId}}",
+                                                                               "cancelar"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Limpar Carrinho da Conta Secundaria",
+                                      "request":  {
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{compradorToken}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "method":  "DELETE",
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/carrinho",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "carrinho"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  }
+                              ]
+                 }
+             ]
+}
