@@ -1,0 +1,619 @@
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Mobile.runtimeconfig.json
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Mobile.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Mobile.pdb
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Extensions.Configuration.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Extensions.DependencyInjection.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Extensions.Logging.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Extensions.Logging.Debug.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Extensions.Options.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Extensions.Primitives.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Maui.Controls.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Maui.Controls.Xaml.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Maui.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Maui.Essentials.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Maui.Graphics.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\ar\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\ca\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\cs\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\da\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\de\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\el\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\es\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\fi\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\fr\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\he\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\hi\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\hr\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\hu\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\id\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\it\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\ja\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\ko\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\ms\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\nb\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\nl\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\pl\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\pt-BR\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\pt\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\ro\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\ru\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\sk\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\sv\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\th\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\tr\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\uk\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\vi\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\zh-HK\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\zh-Hans\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\zh-Hant\Microsoft.Maui.Controls.resources.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.CSharp.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.VisualBasic.Core.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.VisualBasic.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Win32.Primitives.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Win32.Registry.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.AppContext.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Buffers.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Collections.Concurrent.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Collections.Immutable.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Collections.NonGeneric.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Collections.Specialized.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Collections.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.ComponentModel.Annotations.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.ComponentModel.DataAnnotations.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.ComponentModel.EventBasedAsync.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.ComponentModel.Primitives.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.ComponentModel.TypeConverter.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.ComponentModel.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Configuration.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Console.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Core.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Data.Common.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Data.DataSetExtensions.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Data.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Diagnostics.Contracts.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Diagnostics.Debug.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Diagnostics.DiagnosticSource.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Diagnostics.FileVersionInfo.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Diagnostics.Process.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Diagnostics.StackTrace.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Diagnostics.TextWriterTraceListener.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Diagnostics.Tools.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Diagnostics.TraceSource.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Diagnostics.Tracing.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Drawing.Primitives.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Drawing.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Dynamic.Runtime.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Formats.Asn1.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Formats.Tar.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Globalization.Calendars.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Globalization.Extensions.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Globalization.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.Compression.Brotli.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.Compression.FileSystem.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.Compression.ZipFile.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.Compression.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.FileSystem.AccessControl.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.FileSystem.DriveInfo.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.FileSystem.Primitives.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.FileSystem.Watcher.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.FileSystem.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.IsolatedStorage.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.MemoryMappedFiles.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.Pipelines.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.Pipes.AccessControl.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.Pipes.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.UnmanagedMemoryStream.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Linq.Expressions.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Linq.Parallel.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Linq.Queryable.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Linq.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Memory.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.Http.Json.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.Http.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.HttpListener.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.Mail.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.NameResolution.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.NetworkInformation.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.Ping.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.Primitives.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.Quic.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.Requests.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.Security.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.ServicePoint.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.Sockets.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.WebClient.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.WebHeaderCollection.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.WebProxy.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.WebSockets.Client.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.WebSockets.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Numerics.Vectors.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Numerics.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.ObjectModel.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Private.DataContractSerialization.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Private.Uri.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Private.Xml.Linq.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Private.Xml.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Reflection.DispatchProxy.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Reflection.Emit.ILGeneration.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Reflection.Emit.Lightweight.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Reflection.Emit.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Reflection.Extensions.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Reflection.Metadata.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Reflection.Primitives.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Reflection.TypeExtensions.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Reflection.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Resources.Reader.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Resources.ResourceManager.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Resources.Writer.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.CompilerServices.Unsafe.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.CompilerServices.VisualC.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.Extensions.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.Handles.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.InteropServices.JavaScript.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.InteropServices.RuntimeInformation.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.InteropServices.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.Intrinsics.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.Loader.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.Numerics.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.Serialization.Formatters.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.Serialization.Json.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.Serialization.Primitives.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.Serialization.Xml.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.Serialization.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.AccessControl.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.Claims.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.Cryptography.Algorithms.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.Cryptography.Cng.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.Cryptography.Csp.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.Cryptography.Encoding.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.Cryptography.OpenSsl.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.Cryptography.Primitives.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.Cryptography.X509Certificates.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.Cryptography.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.Principal.Windows.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.Principal.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.SecureString.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.ServiceModel.Web.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.ServiceProcess.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Text.Encoding.CodePages.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Text.Encoding.Extensions.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Text.Encoding.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Text.Encodings.Web.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Text.Json.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Text.RegularExpressions.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Threading.Channels.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Threading.Overlapped.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Threading.Tasks.Dataflow.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Threading.Tasks.Extensions.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Threading.Tasks.Parallel.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Threading.Tasks.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Threading.Thread.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Threading.ThreadPool.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Threading.Timer.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Threading.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Transactions.Local.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Transactions.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.ValueTuple.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Web.HttpUtility.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Web.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Windows.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Xml.Linq.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Xml.ReaderWriter.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Xml.Serialization.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Xml.XDocument.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Xml.XPath.XDocument.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Xml.XPath.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Xml.XmlDocument.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Xml.XmlSerializer.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Xml.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\WindowsBase.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\mscorlib.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\netstandard.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.iOS.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Private.CoreLib.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libSystem.Globalization.Native.a
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libSystem.Globalization.Native.dylib
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libSystem.IO.Compression.Native.a
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libSystem.IO.Compression.Native.dylib
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libSystem.Native.a
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libSystem.Native.dylib
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libSystem.Net.Security.Native.a
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libSystem.Net.Security.Native.dylib
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libSystem.Security.Cryptography.Native.Apple.a
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libSystem.Security.Cryptography.Native.Apple.dylib
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmono-component-debugger-static.a
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmono-component-debugger-stub-static.a
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmono-component-debugger.dylib
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmono-component-diagnostics_tracing-static.a
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmono-component-diagnostics_tracing-stub-static.a
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmono-component-diagnostics_tracing.dylib
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmono-component-hot_reload-static.a
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmono-component-hot_reload-stub-static.a
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmono-component-hot_reload.dylib
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmono-component-marshal-ilgen-static.a
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmono-component-marshal-ilgen-stub-static.a
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmono-component-marshal-ilgen.dylib
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmonosgen-2.0.a
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmonosgen-2.0.dylib
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.iOS.registrar.a
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libextension-dotnet.a
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libxamarin-dotnet-debug.a
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libxamarin-dotnet-debug.dylib
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libxamarin-dotnet-nativeaot-debug.a
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libxamarin-dotnet-nativeaot.a
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libxamarin-dotnet.a
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libxamarin-dotnet.dylib
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Shared.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Shared.pdb
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Mobile.csproj.AssemblyReference.cache
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\mauiimage.inputs
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\mauifont.inputs
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\mauisplash.inputs
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\sp\MauiInfo.plist
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\sp\MauiSplash.storyboard
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\sp\splash_58C11A0A2CDF3C43117FC29EECA319E6FBFEFE150B9123BB20E86A467F499449.png
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\sp\splash_58C11A0A2CDF3C43117FC29EECA319E6FBFEFE150B9123BB20E86A467F499449@2x.png
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\sp\splash_58C11A0A2CDF3C43117FC29EECA319E6FBFEFE150B9123BB20E86A467F499449@3x.png
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\mauisplash.stamp
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\dotnet_bot@3x.png
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\dotnet_bot@2x.png
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\dotnet_bot.png
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appiconItunesArtwork.png
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon83.5x83.5@2x.png
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon76x76@2x.png
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon60x60@3x.png
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon60x60@2x.png
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon40x40@3x.png
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon40x40@2x.png
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon29x29@3x.png
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon29x29@2x.png
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon20x20@3x.png
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon20x20@2x.png
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\Contents.json
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\mauiimage.stamp
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\mauiimage.outputs
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\f\MauiInfo.plist
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\mauifont.stamp
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\f\OpenSans-Regular.ttf
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\f\OpenSans-Semibold.ttf
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\actool\_PartialAppManifest.items
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\actool\_BundleResourceWithLogicalName.items
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\actool\_ProcessedImageAssetsPath.items
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\ibtool\_BundleResourceWithLogicalName.items
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\ibtool\_ProcessedInterfaceDefinitionsPath.items
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\copySceneKitAssets\_ProcessedSceneKitAssetsPath.items
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\collada\_ProcessedColladaAssetsPath.items
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\atlas\_ProcessedTextureAtlasesPath.items
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\coremlc\_PartialAppManifest.items
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\coremlc\_BundleResourceWithLogicalName.items
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\_ProcessedBundleResourcesPath.items
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\_ProcessedContentPath.items
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Mobile.GeneratedMSBuildEditorConfig.editorconfig
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Mobile.AssemblyInfoInputs.cache
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Mobile.AssemblyInfo.cs
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Mobile.csproj.CoreCompileInputs.cache
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Mobile.sourcelink.json
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\XamlC.stamp
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\OmniMark.A10F5EFB.Up2Date
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Mobile.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\refint\OmniMarket.Mobile.dll
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Mobile.pdb
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Mobile.genruntimeconfig.cache
+D:\Lucas-Icaro\PTCC-2\Omnimarket.Api\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\ref\OmniMarket.Mobile.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Mobile.runtimeconfig.json
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Mobile.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Mobile.pdb
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Extensions.Configuration.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Extensions.Configuration.Abstractions.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Extensions.DependencyInjection.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Extensions.Logging.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Extensions.Logging.Abstractions.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Extensions.Logging.Debug.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Extensions.Options.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Extensions.Primitives.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Maui.Controls.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Maui.Controls.Xaml.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Maui.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Maui.Essentials.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Maui.Graphics.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\ar\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\ca\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\cs\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\da\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\de\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\el\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\es\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\fi\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\fr\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\he\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\hi\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\hr\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\hu\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\id\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\it\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\ja\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\ko\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\ms\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\nb\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\nl\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\pl\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\pt-BR\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\pt\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\ro\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\ru\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\sk\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\sv\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\th\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\tr\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\uk\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\vi\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\zh-HK\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\zh-Hans\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\zh-Hant\Microsoft.Maui.Controls.resources.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.CSharp.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.VisualBasic.Core.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.VisualBasic.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Win32.Primitives.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.Win32.Registry.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.AppContext.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Buffers.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Collections.Concurrent.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Collections.Immutable.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Collections.NonGeneric.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Collections.Specialized.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Collections.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.ComponentModel.Annotations.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.ComponentModel.DataAnnotations.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.ComponentModel.EventBasedAsync.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.ComponentModel.Primitives.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.ComponentModel.TypeConverter.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.ComponentModel.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Configuration.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Console.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Core.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Data.Common.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Data.DataSetExtensions.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Data.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Diagnostics.Contracts.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Diagnostics.Debug.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Diagnostics.DiagnosticSource.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Diagnostics.FileVersionInfo.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Diagnostics.Process.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Diagnostics.StackTrace.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Diagnostics.TextWriterTraceListener.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Diagnostics.Tools.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Diagnostics.TraceSource.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Diagnostics.Tracing.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Drawing.Primitives.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Drawing.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Dynamic.Runtime.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Formats.Asn1.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Formats.Tar.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Globalization.Calendars.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Globalization.Extensions.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Globalization.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.Compression.Brotli.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.Compression.FileSystem.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.Compression.ZipFile.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.Compression.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.FileSystem.AccessControl.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.FileSystem.DriveInfo.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.FileSystem.Primitives.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.FileSystem.Watcher.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.FileSystem.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.IsolatedStorage.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.MemoryMappedFiles.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.Pipelines.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.Pipes.AccessControl.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.Pipes.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.UnmanagedMemoryStream.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.IO.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Linq.Expressions.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Linq.Parallel.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Linq.Queryable.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Linq.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Memory.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.Http.Json.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.Http.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.HttpListener.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.Mail.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.NameResolution.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.NetworkInformation.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.Ping.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.Primitives.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.Quic.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.Requests.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.Security.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.ServicePoint.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.Sockets.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.WebClient.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.WebHeaderCollection.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.WebProxy.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.WebSockets.Client.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.WebSockets.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Net.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Numerics.Vectors.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Numerics.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.ObjectModel.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Private.DataContractSerialization.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Private.Uri.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Private.Xml.Linq.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Private.Xml.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Reflection.DispatchProxy.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Reflection.Emit.ILGeneration.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Reflection.Emit.Lightweight.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Reflection.Emit.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Reflection.Extensions.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Reflection.Metadata.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Reflection.Primitives.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Reflection.TypeExtensions.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Reflection.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Resources.Reader.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Resources.ResourceManager.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Resources.Writer.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.CompilerServices.Unsafe.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.CompilerServices.VisualC.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.Extensions.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.Handles.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.InteropServices.JavaScript.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.InteropServices.RuntimeInformation.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.InteropServices.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.Intrinsics.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.Loader.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.Numerics.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.Serialization.Formatters.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.Serialization.Json.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.Serialization.Primitives.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.Serialization.Xml.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.Serialization.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Runtime.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.AccessControl.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.Claims.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.Cryptography.Algorithms.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.Cryptography.Cng.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.Cryptography.Csp.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.Cryptography.Encoding.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.Cryptography.OpenSsl.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.Cryptography.Primitives.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.Cryptography.X509Certificates.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.Cryptography.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.Principal.Windows.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.Principal.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.SecureString.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Security.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.ServiceModel.Web.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.ServiceProcess.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Text.Encoding.CodePages.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Text.Encoding.Extensions.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Text.Encoding.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Text.Encodings.Web.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Text.Json.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Text.RegularExpressions.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Threading.Channels.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Threading.Overlapped.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Threading.Tasks.Dataflow.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Threading.Tasks.Extensions.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Threading.Tasks.Parallel.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Threading.Tasks.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Threading.Thread.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Threading.ThreadPool.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Threading.Timer.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Threading.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Transactions.Local.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Transactions.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.ValueTuple.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Web.HttpUtility.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Web.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Windows.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Xml.Linq.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Xml.ReaderWriter.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Xml.Serialization.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Xml.XDocument.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Xml.XPath.XDocument.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Xml.XPath.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Xml.XmlDocument.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Xml.XmlSerializer.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Xml.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\WindowsBase.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\mscorlib.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\netstandard.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.iOS.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\System.Private.CoreLib.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libSystem.Globalization.Native.a
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libSystem.Globalization.Native.dylib
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libSystem.IO.Compression.Native.a
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libSystem.IO.Compression.Native.dylib
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libSystem.Native.a
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libSystem.Native.dylib
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libSystem.Net.Security.Native.a
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libSystem.Net.Security.Native.dylib
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libSystem.Security.Cryptography.Native.Apple.a
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libSystem.Security.Cryptography.Native.Apple.dylib
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmono-component-debugger-static.a
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmono-component-debugger-stub-static.a
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmono-component-debugger.dylib
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmono-component-diagnostics_tracing-static.a
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmono-component-diagnostics_tracing-stub-static.a
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmono-component-diagnostics_tracing.dylib
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmono-component-hot_reload-static.a
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmono-component-hot_reload-stub-static.a
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmono-component-hot_reload.dylib
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmono-component-marshal-ilgen-static.a
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmono-component-marshal-ilgen-stub-static.a
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmono-component-marshal-ilgen.dylib
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmonosgen-2.0.a
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libmonosgen-2.0.dylib
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\Microsoft.iOS.registrar.a
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libextension-dotnet.a
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libxamarin-dotnet-debug.a
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libxamarin-dotnet-debug.dylib
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libxamarin-dotnet-nativeaot-debug.a
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libxamarin-dotnet-nativeaot.a
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libxamarin-dotnet.a
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\libxamarin-dotnet.dylib
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Shared.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\bin\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Shared.pdb
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Mobile.csproj.AssemblyReference.cache
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\mauiimage.inputs
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\mauifont.inputs
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\mauisplash.inputs
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\sp\MauiInfo.plist
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\sp\MauiSplash.storyboard
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\sp\splash_58C11A0A2CDF3C43117FC29EECA319E6FBFEFE150B9123BB20E86A467F499449.png
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\sp\splash_58C11A0A2CDF3C43117FC29EECA319E6FBFEFE150B9123BB20E86A467F499449@2x.png
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\sp\splash_58C11A0A2CDF3C43117FC29EECA319E6FBFEFE150B9123BB20E86A467F499449@3x.png
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\mauisplash.stamp
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appiconItunesArtwork.png
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon83.5x83.5@2x.png
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon76x76@2x.png
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon60x60@3x.png
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon60x60@2x.png
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon40x40@3x.png
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon40x40@2x.png
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon29x29@3x.png
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon29x29@2x.png
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon20x20@3x.png
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon20x20@2x.png
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\Contents.json
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\dotnet_bot@3x.png
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\dotnet_bot@2x.png
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\dotnet_bot.png
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\mauiimage.stamp
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\mauiimage.outputs
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\f\MauiInfo.plist
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\mauifont.stamp
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\f\OpenSans-Regular.ttf
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\f\OpenSans-Semibold.ttf
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\actool\_PartialAppManifest.items
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\actool\_BundleResourceWithLogicalName.items
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\actool\_ProcessedImageAssetsPath.items
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\ibtool\_BundleResourceWithLogicalName.items
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\ibtool\_ProcessedInterfaceDefinitionsPath.items
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\copySceneKitAssets\_ProcessedSceneKitAssetsPath.items
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\collada\_ProcessedColladaAssetsPath.items
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\atlas\_ProcessedTextureAtlasesPath.items
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\coremlc\_PartialAppManifest.items
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\coremlc\_BundleResourceWithLogicalName.items
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\_ProcessedBundleResourcesPath.items
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\_ProcessedContentPath.items
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Mobile.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Mobile.AssemblyInfoInputs.cache
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Mobile.AssemblyInfo.cs
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Mobile.csproj.CoreCompileInputs.cache
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\XamlC.stamp
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\OmniMark.A10F5EFB.Up2Date
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Mobile.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\refint\OmniMarket.Mobile.dll
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Mobile.pdb
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\OmniMarket.Mobile.genruntimeconfig.cache
+c:\Users\lscha\Desktop\ETEC\3 semestre\DTCC\Omni\Omnimarket.Mobile\obj\Debug\net9.0-ios\iossimulator-x64\ref\OmniMarket.Mobile.dll
