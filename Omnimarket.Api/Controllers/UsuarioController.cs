@@ -87,11 +87,16 @@ namespace Omnimarket.Api.Controllers
         }
 
         // Atualiza os dados basicos do usuario e opcionalmente troca a senha.
+        [Authorize]
         [HttpPut("{id:int}")]
         public async Task<IActionResult> AtualizarUsuario(int id, [FromBody] UsuarioAtualizarDto dto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
+
+            var usuarioIdLogado = User.GetUserId();
+            if (id != usuarioIdLogado)
+                return Forbid();
 
             var usuario = await _context.TBL_USUARIO.FindAsync(id);
 
