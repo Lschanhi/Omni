@@ -66,6 +66,7 @@ builder.Services.AddScoped<TokenService>();
 builder.Services.AddScoped<PedidoService>();
 builder.Services.AddScoped<RegistrarService>();
 builder.Services.AddScoped<IProdutoService, ProdutoService>();
+builder.Services.AddScoped<LojaService>();
 
 // Cliente HTTP usado pelo servico externo de validacao de CPF.
 builder.Services.AddHttpClient<ICpfService, CpfService>();

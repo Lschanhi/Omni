@@ -20,6 +20,7 @@ namespace Omnimarket.Api.Data
         public DbSet<ItensPedido> TBL_ITENS_PEDIDO { get; set; }
         public DbSet<Carrinho> TBL_CARRINHO { get; set; }
         public DbSet<ItemCarrinho> TBL_ITEM_CARRINHO { get; set; }
+        public DbSet<Loja> TBL_LOJA { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -32,6 +33,7 @@ namespace Omnimarket.Api.Data
             modelBuilder.Entity<ItensPedido>().ToTable("TBL_ITENS_PEDIDO");
             modelBuilder.Entity<Carrinho>().ToTable("TBL_CARRINHO");
             modelBuilder.Entity<ItemCarrinho>().ToTable("TBL_ITEM_CARRINHO");
+            modelBuilder.Entity<Loja>().ToTable("TBL_LOJA");
 
             modelBuilder.Entity<Usuario>()
                 .HasMany(u => u.Telefones)
@@ -51,10 +53,18 @@ namespace Omnimarket.Api.Data
                 .HasForeignKey(p => p.UsuarioId)
                 .OnDelete(DeleteBehavior.NoAction);
 
+            modelBuilder.Entity<Usuario>()
+                .HasOne(u => u.Loja)
+                .WithOne(l => l.Usuario)
+                .HasForeignKey<Loja>(l => l.UsuarioId)
+                .OnDelete(DeleteBehavior.Cascade);
+
             modelBuilder.Entity<Usuario>().HasIndex(x => x.Cpf).IsUnique();
             modelBuilder.Entity<Usuario>().HasIndex(x => x.Email).IsUnique();
             modelBuilder.Entity<Carrinho>().HasIndex(c => c.UsuarioId).IsUnique();
             modelBuilder.Entity<Produto>().HasIndex(p => p.Sku).IsUnique();
+            modelBuilder.Entity<Loja>().HasIndex(l => l.UsuarioId).IsUnique();
+            modelBuilder.Entity<Loja>().HasIndex(l => l.Slug).IsUnique();
 
             modelBuilder.Entity<Endereco>()
                 .Property(e => e.TipoLogradouro)

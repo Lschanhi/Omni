@@ -65,5 +65,8 @@ namespace Omnimarket.Api.Models
 
         // 🧾 RELAÇÃO COM PEDIDOS
         public List<Pedido> Pedidos { get; set; } = new();
+
+        // Loja unica para o mesmo usuario atuar como vendedor sem outra conta.
+        public Loja? Loja { get; set; }
     }
 }
