@@ -1,30 +1,70 @@
-import { useEffect, useRef, useState, useTransition } from "react";
+import { useDeferredValue, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { mockFeed } from "./data/mockFeed";
 
-const PAGE_SIZE = 4;
+const PAGE_SIZE = 8;
+const CATEGORY_ORDER = ["Tudo", "Eletronicos", "Moda", "Casa", "Esportes", "Games"];
 
-const storyStores = [
-  ...new Map(
-    mockFeed.map((item) => [item.store, { store: item.store, avatar: item.avatar }])
-  ).values()
-];
+function inferCategory(name, index) {
+  const normalized = name.toLowerCase();
 
-function formatPrice(value) {
-  return value.toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL"
-  });
+  if (normalized.includes("fone") || normalized.includes("drone") || normalized.includes("camera")) {
+    return "Eletronicos";
+  }
+
+  if (normalized.includes("tenis") || normalized.includes("mochila")) {
+    return "Moda";
+  }
+
+  if (normalized.includes("lamp") || normalized.includes("cadeira") || normalized.includes("desk")) {
+    return "Casa";
+  }
+
+  if (normalized.includes("runner") || normalized.includes("band")) {
+    return "Esportes";
+  }
+
+  if (normalized.includes("teclado") || normalized.includes("mouse") || normalized.includes("monitor")) {
+    return "Games";
+  }
+
+  return CATEGORY_ORDER[(index % (CATEGORY_ORDER.length - 1)) + 1];
 }
 
-function IconButton({ label, children, className = "", onRight = false }) {
+function calcDiscountPercent(oldPrice, price) {
+  return Math.max(5, Math.round(((oldPrice - price) / oldPrice) * 100));
+}
+
+const enrichedFeed = mockFeed.map((item, index) => {
+  const oldPrice = Number((item.price * (1.12 + (index % 3) * 0.05)).toFixed(2));
+  const rating = Number((4.3 + ((index % 7) * 0.1)).toFixed(1));
+
+  return {
+    ...item,
+    category: inferCategory(item.product, index),
+    oldPrice,
+    rating,
+    reviews: 140 + index * 17,
+    freeShipping: index % 2 === 0,
+    full: index % 3 === 0,
+    bestSeller: index % 5 === 0,
+    lowStock: index % 7 === 0,
+    discountPercent: calcDiscountPercent(oldPrice, item.price)
+  };
+});
+
+const categories = CATEGORY_ORDER.filter(
+  (category) => category === "Tudo" || enrichedFeed.some((item) => item.category === category)
+);
+
+function formatPrice(value) {
+  return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+}
+
+function SearchIcon() {
   return (
-    <button
-      type="button"
-      aria-label={label}
-      className={`${className} ${onRight ? "to-right" : ""}`.trim()}
-    >
-      {children}
-    </button>
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M10.8 4a6.8 6.8 0 1 1 0 13.6A6.8 6.8 0 0 1 10.8 4Zm5.6 12 4 4" />
+    </svg>
   );
 }
 
@@ -37,34 +77,11 @@ function BellIcon() {
   );
 }
 
-function ChatIcon() {
+function CartIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M5 5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8l-4.5 3v-3H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" />
-    </svg>
-  );
-}
-
-function HeartIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 20s-6.2-3.9-8.5-8A4.9 4.9 0 0 1 7.8 4c1.7 0 3.2.9 4.2 2.2A5.2 5.2 0 0 1 16.2 4a4.9 4.9 0 0 1 4.3 8c-2.3 4.1-8.5 8-8.5 8Z" />
-    </svg>
-  );
-}
-
-function SendIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="m3 12 18-8-6.5 8L21 20 3 12Z" />
-    </svg>
-  );
-}
-
-function BookmarkIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1Z" />
+      <path d="M3.5 5h2l2 10h9l2-7H7.5" />
+      <path d="M9 19a1.5 1.5 0 1 0 0 .1m8-0.1a1.5 1.5 0 1 0 0 .1" />
     </svg>
   );
 }
@@ -77,27 +94,18 @@ function HomeIcon() {
   );
 }
 
-function SearchIcon() {
+function GridIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M10.8 4a6.8 6.8 0 1 1 0 13.6A6.8 6.8 0 0 1 10.8 4Zm5.6 12 4 4" />
+      <path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z" />
     </svg>
   );
 }
 
-function PlusIcon() {
+function HeartIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 5v14M5 12h14" />
-    </svg>
-  );
-}
-
-function BagIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M6 8h12l-1 12H7L6 8Z" />
-      <path d="M9 8a3 3 0 0 1 6 0" />
+      <path d="M12 20s-6.2-3.9-8.5-8A4.9 4.9 0 0 1 7.8 4c1.7 0 3.2.9 4.2 2.2A5.2 5.2 0 0 1 16.2 4a4.9 4.9 0 0 1 4.3 8c-2.3 4.1-8.5 8-8.5 8Z" />
     </svg>
   );
 }
@@ -111,14 +119,54 @@ function UserIcon() {
   );
 }
 
+function StarIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="m12 3 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18l-5.8 3 1.1-6.5L2.6 9.8l6.5-.9Z" />
+    </svg>
+  );
+}
+
+function NavItem({ icon, label, active = false }) {
+  return (
+    <button className={active ? "active" : ""} type="button" aria-label={label}>
+      {icon}
+      <span>{label}</span>
+    </button>
+  );
+}
+
 export default function App() {
+  const [query, setQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("Tudo");
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [isPending, startTransition] = useTransition();
   const sentinelRef = useRef(null);
 
-  const visibleFeed = mockFeed.slice(0, visibleCount);
-  const hasMore = visibleCount < mockFeed.length;
+  const deferredQuery = useDeferredValue(query);
+
+  const filteredFeed = useMemo(() => {
+    const normalizedQuery = deferredQuery.trim().toLowerCase();
+
+    return enrichedFeed.filter((item) => {
+      const categoryMatch = selectedCategory === "Tudo" || item.category === selectedCategory;
+      const queryMatch =
+        normalizedQuery.length === 0 ||
+        item.product.toLowerCase().includes(normalizedQuery) ||
+        item.store.toLowerCase().includes(normalizedQuery) ||
+        item.category.toLowerCase().includes(normalizedQuery);
+
+      return categoryMatch && queryMatch;
+    });
+  }, [deferredQuery, selectedCategory]);
+
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+  }, [deferredQuery, selectedCategory]);
+
+  const visibleProducts = filteredFeed.slice(0, visibleCount);
+  const hasMore = visibleCount < filteredFeed.length;
 
   useEffect(() => {
     const sentinel = sentinelRef.current;
@@ -129,7 +177,7 @@ export default function App() {
         if (!entries[0]?.isIntersecting || !hasMore || isLoadingMore) return;
         setIsLoadingMore(true);
       },
-      { rootMargin: "900px 0px 900px 0px" }
+      { rootMargin: "650px 0px" }
     );
 
     observer.observe(sentinel);
@@ -141,114 +189,139 @@ export default function App() {
 
     const timer = setTimeout(() => {
       startTransition(() => {
-        setVisibleCount((previous) => Math.min(previous + PAGE_SIZE, mockFeed.length));
+        setVisibleCount((previous) => Math.min(previous + PAGE_SIZE, filteredFeed.length));
       });
       setIsLoadingMore(false);
-    }, 400);
+    }, 320);
 
     return () => clearTimeout(timer);
-  }, [isLoadingMore, startTransition]);
+  }, [filteredFeed.length, isLoadingMore, startTransition]);
 
   return (
-    <div className="page-bg">
-      <div className="noise-layer" />
-      <main className="feed-shell">
-        <header className="topbar">
-          <h1 className="brand">
-            <span className="brand-gold">Omni</span>Market
-          </h1>
-          <div className="top-icons">
-            <span className="icon-wrap" aria-hidden="true">
-              <BellIcon />
-            </span>
-            <span className="icon-wrap" aria-hidden="true">
-              <ChatIcon />
-            </span>
+    <div className="market-page">
+      <main className="market-shell">
+        <header className="market-header">
+          <div className="header-top">
+            <h1 className="market-brand">
+              <span>Omni</span>Market
+            </h1>
+            <div className="header-actions">
+              <button type="button" aria-label="Notificacoes">
+                <BellIcon />
+              </button>
+              <button type="button" aria-label="Carrinho">
+                <CartIcon />
+              </button>
+            </div>
           </div>
+
+          <div className="search-bar">
+            <SearchIcon />
+            <input
+              type="search"
+              placeholder="Buscar produtos, marcas e lojas"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+            />
+          </div>
+          <p className="delivery-line">Entrega para Sao Paulo, SP</p>
         </header>
 
-        <section className="stories" aria-label="Lojas em destaque">
-          {storyStores.map((story) => (
-            <article key={story.store} className="story-item">
-              <div className="story-avatar-wrap">
-                <img className="story-avatar" src={story.avatar} alt={`Loja ${story.store}`} />
-              </div>
-              <p className="story-name">{story.store}</p>
-            </article>
+        <section className="hero-row" aria-label="Promocoes principais">
+          <article className="hero-card gold">
+            <small>OFERTA DO DIA</small>
+            <h2>Ate 35% OFF em tecnologia</h2>
+            <p>Descontos progressivos com pagamento seguro.</p>
+          </article>
+          <article className="hero-card dark">
+            <small>OMNIPAY</small>
+            <h2>Parcele em 10x sem juros</h2>
+            <p>Compra protegida para cliente e vendedor.</p>
+          </article>
+        </section>
+
+        <section className="category-strip" aria-label="Categorias">
+          {categories.map((category) => (
+            <button
+              key={category}
+              type="button"
+              className={selectedCategory === category ? "active" : ""}
+              onClick={() => setSelectedCategory(category)}
+            >
+              {category}
+            </button>
           ))}
         </section>
 
-        <section className="feed-list">
-          {visibleFeed.map((item, index) => (
-            <article
-              className="product-card"
-              key={item.id}
-              style={{ animationDelay: `${index * 90}ms` }}
-            >
-              <div className="card-header">
-                <div className="store-meta">
-                  <img className="store-avatar" src={item.avatar} alt={item.store} />
-                  <strong>{item.store}</strong>
+        <section className="trust-strip" aria-label="Beneficios">
+          <p>Compra protegida</p>
+          <p>Devolucao facil</p>
+          <p>Frete rastreavel</p>
+        </section>
+
+        <section className="section-head">
+          <div>
+            <h3>Ofertas para voce</h3>
+            <p>{filteredFeed.length} produtos encontrados</p>
+          </div>
+          <button type="button">Ver tudo</button>
+        </section>
+
+        <section className="product-grid">
+          {visibleProducts.map((item) => (
+            <article className="product-card" key={item.id}>
+              <div className="image-wrap">
+                <img src={item.image} alt={item.product} />
+                {item.full && <span className="badge full">FULL</span>}
+                {item.bestSeller && <span className="badge seller">Mais vendido</span>}
+              </div>
+
+              <div className="product-content">
+                <p className="store-name">{item.store}</p>
+                <h4>{item.product}</h4>
+
+                <p className="main-price">{formatPrice(item.price)}</p>
+                <div className="price-row">
+                  <span className="old-price">{formatPrice(item.oldPrice)}</span>
+                  <span className="discount">{item.discountPercent}% OFF</span>
                 </div>
-                <button className="ghost-btn" type="button" aria-label="Mais opcoes">
-                  ...
+                <p className="installment">10x de {formatPrice(item.price / 10)} sem juros</p>
+
+                <div className="shipping-row">
+                  {item.freeShipping ? "Frete gratis" : "Entrega rapida"}
+                  {item.lowStock && <span>Ultimas unidades</span>}
+                </div>
+
+                <div className="meta-row">
+                  <span className="rating">
+                    <StarIcon />
+                    {item.rating}
+                  </span>
+                  <span className="reviews">({item.reviews})</span>
+                </div>
+
+                <button className="buy-btn" type="button">
+                  Adicionar ao carrinho
                 </button>
               </div>
-
-              <img className="product-image" src={item.image} alt={item.product} />
-
-              <div className="card-actions">
-                <IconButton label="Curtir">
-                  <HeartIcon />
-                </IconButton>
-                <IconButton label="Comentar">
-                  <ChatIcon />
-                </IconButton>
-                <IconButton label="Compartilhar">
-                  <SendIcon />
-                </IconButton>
-                <IconButton label="Salvar" onRight>
-                  <BookmarkIcon />
-                </IconButton>
-              </div>
-
-              <div className="card-content">
-                <div className="title-row">
-                  <h2>{item.product}</h2>
-                  <span className="price">{formatPrice(item.price)}</span>
-                </div>
-                <p className="description">{item.description}</p>
-                <p className="posted">{item.postedAt}</p>
-              </div>
             </article>
           ))}
-
-          <div ref={sentinelRef} className="sentinel" />
-
-          {(isLoadingMore || isPending) && (
-            <p className="status-message">Carregando mais produtos...</p>
-          )}
-          {!hasMore && <p className="status-message">Voce chegou ao fim do feed.</p>}
         </section>
 
-        <nav className="bottom-nav" aria-label="Navegacao principal">
-          <IconButton className="active" label="Inicio">
-            <HomeIcon />
-          </IconButton>
-          <IconButton label="Buscar">
-            <SearchIcon />
-          </IconButton>
-          <IconButton label="Publicar">
-            <PlusIcon />
-          </IconButton>
-          <IconButton label="Pedidos">
-            <BagIcon />
-          </IconButton>
-          <IconButton label="Perfil">
-            <UserIcon />
-          </IconButton>
-        </nav>
+        <div ref={sentinelRef} className="sentinel" />
+
+        {(isLoadingMore || isPending) && (
+          <p className="status-message">Carregando mais produtos...</p>
+        )}
+        {!hasMore && <p className="status-message">Fim dos resultados.</p>}
       </main>
+
+      <nav className="bottom-nav" aria-label="Navegacao principal">
+        <NavItem active icon={<HomeIcon />} label="Inicio" />
+        <NavItem icon={<GridIcon />} label="Categorias" />
+        <NavItem icon={<HeartIcon />} label="Favoritos" />
+        <NavItem icon={<UserIcon />} label="Perfil" />
+      </nav>
     </div>
   );
 }
