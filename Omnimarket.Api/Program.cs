@@ -9,13 +9,32 @@ using Omnimarket.Api.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Permite sobreposicao local de segredos sem versionar no repositorio.
+builder.Configuration.AddJsonFile("appsettings.Local.json", optional: true, reloadOnChange: true);
+
+var connectionString = builder.Configuration.GetConnectionString("ConexaoLocal");
+if (string.IsNullOrWhiteSpace(connectionString) ||
+    connectionString.Contains("SEU_SERVIDOR", StringComparison.OrdinalIgnoreCase))
+{
+    throw new InvalidOperationException(
+        "Configure ConnectionStrings:ConexaoLocal em appsettings.Local.json, User Secrets ou variavel de ambiente.");
+}
+
+var jwtKey = builder.Configuration["Jwt:Key"];
+if (string.IsNullOrWhiteSpace(jwtKey) ||
+    jwtKey.Contains("DEFINA_", StringComparison.OrdinalIgnoreCase))
+{
+    throw new InvalidOperationException(
+        "Configure Jwt:Key em appsettings.Local.json, User Secrets ou variavel de ambiente.");
+}
+
 // Chave usada para assinar e validar os tokens JWT da aplicacao.
-var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!);
+var key = Encoding.UTF8.GetBytes(jwtKey);
 
 // Registra o contexto do Entity Framework apontando para o banco SQL Server.
 builder.Services.AddDbContext<DataContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoLocal"));
+    options.UseSqlServer(connectionString);
 });
 
 // Configura a autenticacao da API para usar JWT em todos os endpoints protegidos.

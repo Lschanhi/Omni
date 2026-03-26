@@ -15,8 +15,10 @@ public static class EnumExtensions
     public static string GetDisplayName(Enum enumValue)
     {
         var field = enumValue.GetType().GetField(enumValue.ToString());
-        var attr = (DisplayAttribute)Attribute.GetCustomAttribute(field, typeof(DisplayAttribute));
+        if (field == null)
+            return enumValue.ToString();
 
-        return attr?.Name ?? enumValue.ToString();
+        var attr = field.GetCustomAttribute<DisplayAttribute>();
+        return string.IsNullOrWhiteSpace(attr?.Name) ? enumValue.ToString() : attr.Name!;
     }
 }
